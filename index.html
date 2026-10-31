@@ -1,0 +1,1644 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Gothic Cosmic Portfolio | Fullstack Developer</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Devicon & SimpleIcons CDN for tech logos -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicon/devicon@v2.15.1/devicon.min.css">
+    
+    <style>
+        .orbit-wrapper {
+            position: relative;
+            width: 480px;
+            height: 480px;
+            margin: 0 auto 2rem;
+            z-index: 10;
+        }
+        .orbit-ring {
+            position: absolute;
+            top: 50%; left: 50%;
+            border-radius: 50%;
+            border: 1px solid rgba(0, 255, 255, 0.15);
+            transform: translate(-50%, -50%);
+            animation: spinOrbit linear infinite;
+            pointer-events: none;
+        }
+        .orbit-inner {
+            width: 320px; height: 320px;
+            animation-duration: 32s;
+            animation-direction: normal;
+        }
+        .orbit-outer {
+            width: 440px; height: 440px;
+            animation-duration: 48s;
+            animation-direction: reverse;
+        }
+        @keyframes spinOrbit {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        .orbit-item {
+            position: absolute;
+            width: 46px; height: 46px;
+            background: rgba(15, 15, 25, 0.88);
+            border: 1.5px solid rgba(0, 255, 255, 0.5);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.15rem;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.35);
+            cursor: pointer;
+            transition: all 0.35s ease;
+            pointer-events: auto;
+            backdrop-filter: blur(3px);
+        }
+        .orbit-item:hover {
+            transform: scale(1.5) rotateZ(0deg);
+            border-color: #00ffff;
+            background: #00ffff;
+            color: #000;
+            z-index: 30;
+            box-shadow: 0 0 18px rgba(0, 255, 255, 0.6);
+        }
+        .orbit-item i {
+            filter: drop-shadow(0 0 4px rgba(0, 255, 255, 0.4));
+        }
+        /* Inner orbit: 6 items, radius ~118px */
+        .orbit-inner .orbit-item:nth-child(1) { transform: rotate(0deg)   translate(118px) rotate(0deg); }
+        .orbit-inner .orbit-item:nth-child(2) { transform: rotate(60deg)  translate(118px) rotate(-60deg); }
+        .orbit-inner .orbit-item:nth-child(3) { transform: rotate(120deg) translate(118px) rotate(-120deg); }
+        .orbit-inner .orbit-item:nth-child(4) { transform: rotate(180deg) translate(118px) rotate(-180deg); }
+        .orbit-inner .orbit-item:nth-child(5) { transform: rotate(240deg) translate(118px) rotate(-240deg); }
+        .orbit-inner .orbit-item:nth-child(6) { transform: rotate(300deg) translate(118px) rotate(-300deg); }
+        /* Outer orbit: 6 items, radius ~170px */
+        .orbit-outer .orbit-item:nth-child(1) { transform: rotate(30deg)  translate(170px) rotate(-30deg); }
+        .orbit-outer .orbit-item:nth-child(2) { transform: rotate(90deg)  translate(170px) rotate(-90deg); }
+        .orbit-outer .orbit-item:nth-child(3) { transform: rotate(150deg) translate(170px) rotate(-150deg); }
+        .orbit-outer .orbit-item:nth-child(4) { transform: rotate(210deg) translate(170px) rotate(-210deg); }
+        .orbit-outer .orbit-item:nth-child(5) { transform: rotate(270deg) translate(170px) rotate(-270deg); }
+        .orbit-outer .orbit-item:nth-child(6) { transform: rotate(330deg) translate(170px) rotate(-330deg); }
+    </style>
+
+    :root {
+            --bg-color: #0a0a0c;
+            --text-color: #e0e0e0;
+            --card-bg: linear-gradient(145deg, #14151c, #0a0a0d);
+            --border-color: #22232d;
+            --nav-bg: rgba(10, 10, 12, 0.85);
+            --accent-cyan: #00ffff;
+            --secondary-text: #9090a0;
+            --header-gradient: linear-gradient(135deg, #ffffff 0%, #8c92a4 40%, #e0e0e0 70%, #ffffff 100%);
+        }
+        [data-theme="light"] {
+            --bg-color: #f4f4f6;
+            --text-color: #1a1a1c;
+            --card-bg: linear-gradient(145deg, #ffffff, #e6e6e9);
+            --border-color: #d1d1d6;
+            --nav-bg: rgba(244, 244, 246, 0.85);
+            --accent-cyan: #007aff;
+            --secondary-text: #4a4a4c;
+            --header-gradient: linear-gradient(135deg, #1a1a1c 0%, #4a4a4c 40%, #1a1a1c 70%, #000000 100%);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
+
+        .theme-toggle-btn {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0.2rem 0.5rem;
+            transition: transform 0.3s ease;
+        }
+        .theme-toggle-btn:hover { transform: scale(1.2); }
+
+        #cosmic-bg {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -2;
+            pointer-events: none;
+        }
+        
+        .main-wrapper {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 5rem 1.5rem 6rem; /* Added top padding for fixed nav */
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Update components to use variables */
+        .nav-bar {
+            background: var(--nav-bg);
+            border-bottom: 1px solid rgba(224, 224, 224, 0.15);
+        }
+        .nav-brand, .nav-links a { color: var(--text-color); }
+        .project-card, .about-section, .contact-section, .terminal-section { 
+            background: var(--card-bg); 
+            border-color: var(--border-color);
+        }
+        h1 {
+            background: var(--header-gradient);
+            -webkit-background-clip: text;
+        }
+        .section-title, .card-title, .about-card h4, .terminal-header h3 { color: var(--text-color); }
+        .card-desc, .about-card p, .subtitle, .footer-text { color: var(--secondary-text); }
+        .status-badge, .submit-btn, .hexagon-badge:hover, .social-emblem:hover { 
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+        }
+        .submit-btn:hover { background: var(--accent-cyan); color: var(--bg-color); }
+
+
+        /* --- HERO SECTION --- */
+        .hero-section {
+            text-align: center;
+            padding: 2rem 1rem 3rem;
+        }
+        .hero-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .orbit-wrapper {
+            position: relative;
+            width: 480px;
+            height: 480px;
+            margin: 0 auto;
+            z-index: 10;
+        }
+        .orbit-ring {
+            position: absolute;
+            top: 50%; left: 50%;
+            border-radius: 50%;
+            border: 1px solid rgba(0, 255, 255, 0.15);
+            transform: translate(-50%, -50%);
+            animation: spinOrbit linear infinite;
+            pointer-events: none;
+        }
+        .orbit-inner {
+            width: 320px; height: 320px;
+            animation-duration: 32s;
+            animation-direction: normal;
+        }
+        .orbit-outer {
+            width: 440px; height: 440px;
+            animation-duration: 48s;
+            animation-direction: reverse;
+        }
+        @keyframes spinOrbit {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        .orbit-item {
+            position: absolute;
+            width: 46px; height: 46px;
+            background: rgba(15, 15, 25, 0.88);
+            border: 1.5px solid rgba(0, 255, 255, 0.5);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.15rem;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.35);
+            cursor: pointer;
+            transition: all 0.35s ease;
+            pointer-events: auto;
+            backdrop-filter: blur(3px);
+        }
+        .orbit-item:hover {
+            transform: scale(1.5) rotateZ(0deg);
+            border-color: #00ffff;
+            background: #00ffff;
+            color: #000;
+            z-index: 30;
+            box-shadow: 0 0 18px rgba(0, 255, 255, 0.6);
+        }
+        .orbit-item i {
+            filter: drop-shadow(0 0 4px rgba(0, 255, 255, 0.4));
+        }
+        /* Inner orbit: 6 items, radius ~118px */
+        .orbit-inner .orbit-item:nth-child(1) { transform: rotate(0deg)   translate(118px) rotate(0deg); }
+        .orbit-inner .orbit-item:nth-child(2) { transform: rotate(60deg)  translate(118px) rotate(-60deg); }
+        .orbit-inner .orbit-item:nth-child(3) { transform: rotate(120deg) translate(118px) rotate(-120deg); }
+        .orbit-inner .orbit-item:nth-child(4) { transform: rotate(180deg) translate(118px) rotate(-180deg); }
+        .orbit-inner .orbit-item:nth-child(5) { transform: rotate(240deg) translate(118px) rotate(-240deg); }
+        .orbit-inner .orbit-item:nth-child(6) { transform: rotate(300deg) translate(118px) rotate(-300deg); }
+        /* Outer orbit: 6 items, radius ~170px */
+        .orbit-outer .orbit-item:nth-child(1) { transform: rotate(30deg)  translate(170px) rotate(-30deg); }
+        .orbit-outer .orbit-item:nth-child(2) { transform: rotate(90deg)  translate(170px) rotate(-90deg); }
+        .orbit-outer .orbit-item:nth-child(3) { transform: rotate(150deg) translate(170px) rotate(-150deg); }
+        .orbit-outer .orbit-item:nth-child(4) { transform: rotate(210deg) translate(170px) rotate(-210deg); }
+        .orbit-outer .orbit-item:nth-child(5) { transform: rotate(270deg) translate(170px) rotate(-270deg); }
+        .orbit-outer .orbit-item:nth-child(6) { transform: rotate(330deg) translate(170px) rotate(-330deg); }
+
+        .profile-container {
+            position: relative;
+            z-index: 20;
+            width: 380px;
+            height: 380px;
+            margin: -60px auto 1.5rem;
+        }
+        .photo-glow {
+            position: absolute;
+            top: 50%; left: 50%;
+            width: 100%; height: 100%;
+            background: radial-gradient(circle, rgba(0, 255, 255, 0.25) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            filter: blur(25px);
+            z-index: -1;
+            animation: pulse-glow 4s infinite alternate;
+        }
+        @keyframes pulse-glow {
+            0% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
+            100% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+        }
+        .profile-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 20px;
+            border: 3px solid rgba(224, 224, 224, 0.8);
+            box-shadow: 
+                0 0 30px rgba(0, 255, 255, 0.35),
+                0 0 60px rgba(0, 255, 255, 0.15),
+                inset 0 0 30px rgba(0, 255, 255, 0.05);
+            transition: all 0.5s ease;
+        }
+        .profile-container:hover img {
+            box-shadow: 
+                0 0 40px rgba(0, 255, 255, 0.5),
+                0 0 80px rgba(0, 255, 255, 0.25),
+                inset 0 0 40px rgba(0, 255, 255, 0.1);
+            border-color: #00ffff;
+            transform: scale(1.02);
+        }
+        .status-badge {
+            display: inline-block;
+            padding: 0.35rem 1.2rem;
+            background: rgba(20, 20, 30, 0.9);
+            border: 1px solid #00ffff;
+            color: #00ffff;
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            box-shadow: 0 0 12px rgba(0, 255, 255, 0.3);
+        }
+        h1 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #ffffff 0%, #8c92a4 40%, #e0e0e0 70%, #ffffff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.9));
+            letter-spacing: 3px;
+            margin-bottom: 0.5rem;
+        }
+        .hero-desc {
+            color: var(--secondary-text);
+            font-size: 1rem;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+        .cta-btn {
+            padding: 0.85rem 2rem;
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .cta-btn.primary {
+            background: linear-gradient(135deg, #00ffff 0%, #00cccc 100%);
+            color: #0a0a0c;
+            border: none;
+        }
+        .cta-btn.primary:hover {
+            background: linear-gradient(135deg, #00ffff 0%, #00e6e6 100%);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+        .cta-btn.secondary {
+            background: transparent;
+            color: #e0e0e0;
+            border: 1.5px solid rgba(224, 224, 224, 0.4);
+        }
+        .cta-btn.secondary:hover {
+            border-color: #00ffff;
+            color: #00ffff;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Responsive Hero */
+        @media (max-width: 900px) {
+            .orbit-wrapper { width: 420px; height: 420px; }
+            .orbit-inner { width: 280px; height: 280px; }
+            .orbit-outer { width: 380px; height: 380px; }
+            .profile-container { width: 320px; height: 320px; margin-top: -40px; }
+            .orbit-inner .orbit-item:nth-child(1) { transform: rotate(0deg)   translate(102px) rotate(0deg); }
+            .orbit-inner .orbit-item:nth-child(2) { transform: rotate(60deg)  translate(102px) rotate(-60deg); }
+            .orbit-inner .orbit-item:nth-child(3) { transform: rotate(120deg) translate(102px) rotate(-120deg); }
+            .orbit-inner .orbit-item:nth-child(4) { transform: rotate(180deg) translate(102px) rotate(-180deg); }
+            .orbit-inner .orbit-item:nth-child(5) { transform: rotate(240deg) translate(102px) rotate(-240deg); }
+            .orbit-inner .orbit-item:nth-child(6) { transform: rotate(300deg) translate(102px) rotate(-300deg); }
+            .orbit-outer .orbit-item:nth-child(1) { transform: rotate(30deg)  translate(148px) rotate(-30deg); }
+            .orbit-outer .orbit-item:nth-child(2) { transform: rotate(90deg)  translate(148px) rotate(-90deg); }
+            .orbit-outer .orbit-item:nth-child(3) { transform: rotate(150deg) translate(148px) rotate(-150deg); }
+            .orbit-outer .orbit-item:nth-child(4) { transform: rotate(210deg) translate(148px) rotate(-210deg); }
+            .orbit-outer .orbit-item:nth-child(5) { transform: rotate(270deg) translate(148px) rotate(-270deg); }
+            .orbit-outer .orbit-item:nth-child(6) { transform: rotate(330deg) translate(148px) rotate(-330deg); }
+        }
+        @media (max-width: 600px) {
+            .orbit-wrapper { width: 340px; height: 340px; }
+            .orbit-inner { width: 230px; height: 230px; }
+            .orbit-outer { width: 310px; height: 310px; }
+            .profile-container { width: 260px; height: 260px; margin-top: -30px; }
+            .orbit-item { width: 40px; height: 40px; font-size: 1rem; }
+            .orbit-inner .orbit-item:nth-child(1) { transform: rotate(0deg)   translate(84px) rotate(0deg); }
+            .orbit-inner .orbit-item:nth-child(2) { transform: rotate(60deg)  translate(84px) rotate(-60deg); }
+            .orbit-inner .orbit-item:nth-child(3) { transform: rotate(120deg) translate(84px) rotate(-120deg); }
+            .orbit-inner .orbit-item:nth-child(4) { transform: rotate(180deg) translate(84px) rotate(-180deg); }
+            .orbit-inner .orbit-item:nth-child(5) { transform: rotate(240deg) translate(84px) rotate(-240deg); }
+            .orbit-inner .orbit-item:nth-child(6) { transform: rotate(300deg) translate(84px) rotate(-300deg); }
+            .orbit-outer .orbit-item:nth-child(1) { transform: rotate(30deg)  translate(122px) rotate(-30deg); }
+            .orbit-outer .orbit-item:nth-child(2) { transform: rotate(90deg)  translate(122px) rotate(-90deg); }
+            .orbit-outer .orbit-item:nth-child(3) { transform: rotate(150deg) translate(122px) rotate(-150deg); }
+            .orbit-outer .orbit-item:nth-child(4) { transform: rotate(210deg) translate(122px) rotate(-210deg); }
+            .orbit-outer .orbit-item:nth-child(5) { transform: rotate(270deg) translate(122px) rotate(-270deg); }
+            .orbit-outer .orbit-item:nth-child(6) { transform: rotate(330deg) translate(122px) rotate(-330deg); }
+        }
+
+        /* --- SECTION HEADINGS --- */
+        .section-title {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.8rem;
+            text-align: center;
+            margin: 4rem 0 2rem;
+            color: #e0e0e0;
+            letter-spacing: 2px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        .section-title::before, .section-title::after {
+            content: '';
+            height: 1px;
+            width: 60px;
+            background: linear-gradient(90deg, transparent, #00ffff, transparent);
+        }
+
+        /* --- TECH STACK GRID --- */
+        .tech-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 3rem;
+        }
+        .hexagon-badge {
+            width: 90px;
+            height: 100px;
+            background: linear-gradient(145deg, #1c1d24, #0d0e12);
+            border: 1px solid rgba(224, 224, 224, 0.2);
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .hexagon-badge i {
+            font-size: 2.2rem;
+            color: #c0c0c0;
+            transition: all 0.3s ease;
+        }
+        .hexagon-badge span {
+            font-size: 0.65rem;
+            margin-top: 5px;
+            color: #8a8a9a;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .hexagon-badge:hover {
+            transform: scale(1.1);
+            border-color: #00ffff;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+        }
+        .hexagon-badge:hover i {
+            color: #00ffff;
+            filter: drop-shadow(0 0 8px #00ffff);
+        }
+        .hexagon-badge:hover span {
+            color: #ffffff;
+        }
+
+        /* --- FILTER BUTTONS --- */
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            background: linear-gradient(135deg, #16171d 0%, #0a0a0d 100%);
+            border: 1px solid #333440;
+            color: #a0a0b0;
+            padding: 0.5rem 1.2rem;
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+            box-shadow: inset 0 0 5px rgba(0,0,0,0.8);
+        }
+        .filter-btn:hover, .filter-btn.active {
+            color: #ffffff;
+            border-color: #e0e0e0;
+            background: linear-gradient(135deg, #2a2c38 0%, #12131a 100%);
+            box-shadow: 0 0 10px rgba(224, 224, 224, 0.3), inset 0 0 8px rgba(0, 255, 255, 0.2);
+        }
+
+        /* --- PROJECTS GRID & CARDS --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        .project-card {
+            background: linear-gradient(145deg, #14151c, #0a0a0d);
+            border: 1px solid #22232d;
+            border-radius: 6px;
+            padding: 1.5rem;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .project-card:hover {
+            border-color: #e0e0e0;
+            box-shadow: 0 0 20px rgba(224, 224, 224, 0.2), inset 0 0 10px rgba(0, 255, 255, 0.1);
+        }
+        .card-category {
+            font-size: 0.7rem;
+            color: #00ffff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+        .card-title {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.2rem;
+            color: #ffffff;
+            margin-bottom: 0.8rem;
+        }
+        .card-desc {
+            font-size: 0.85rem;
+            color: #9090a0;
+            line-height: 1.5;
+            margin-bottom: 1.2rem;
+        }
+        .card-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .tag {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.2rem 0.6rem;
+            font-size: 0.65rem;
+            border-radius: 3px;
+            color: #b0b0c0;
+        }
+
+        /* --- TERMINAL PLAYGROUND --- */
+        .terminal-section {
+            margin: 4rem 0;
+            padding: 2rem;
+            background: linear-gradient(180deg, #0d0e14 0%, #0a0a10 100%);
+            border: 1px solid #2a2d3a;
+            border-radius: 8px;
+        }
+        .terminal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid #3a3f4d;
+        }
+        .terminal-header h3 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 0.85rem;
+            color: #e0e0e0;
+            letter-spacing: 1px;
+        }
+        .terminal-actions { display: flex; gap: 8px; }
+        .terminal-close, .terminal-minimize {
+            width: 20px; height: 20px;
+            border-radius: 50%;
+            background: #3a3f4d;
+            cursor: pointer;
+            font-size: 0.7rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #6a6f80;
+        }
+        .terminal-close { background: #5a3a3a; }
+        .terminal-minimize { background: #3a5a3a; }
+        .terminal-content {
+            height: 250px;
+            overflow-y: auto;
+            padding: 1rem;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.8rem;
+            color: #c0c0d0;
+            background: #0a0a12;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        .terminal-output {
+            white-space: pre-wrap;
+            word-break: break-all;
+            margin-bottom: 0.3rem;
+        }
+        .terminal-input-line {
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        .terminal-prompt {
+            color: #00ffff;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.8rem;
+        }
+        .terminal-input {
+            background: #0a0a12;
+            border: 1px solid #3a3f4d;
+            color: #c0c0d0;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.8rem;
+            padding: 0.3rem 0.5rem;
+            border-radius: 3px;
+            outline: none;
+            width: 60%;
+        }
+
+        /* --- CONTACT SECTION & FORM --- */
+        .contact-section {
+            margin: 4rem 0 2rem;
+            padding: 3rem 2rem;
+            background: linear-gradient(145deg, #12131a, #0a0a0e);
+            border: 1px solid #2a2d3a;
+            border-radius: 8px;
+            position: relative;
+        }
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+        .form-group label {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 0.75rem;
+            color: #a0a0b0;
+            letter-spacing: 1px;
+        }
+        .form-control {
+            background: #0a0a10;
+            border: 1px solid #333644;
+            border-radius: 4px;
+            padding: 0.8rem 1rem;
+            color: #e0e0e0;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        .form-control:focus {
+            border-color: #00ffff;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+        }
+        textarea.form-control { resize: vertical; min-height: 120px; }
+        .submit-btn {
+            background: linear-gradient(135deg, #1f2230 0%, #0d0e14 100%);
+            border: 1px solid #00ffff;
+            color: #00ffff;
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 0.85rem;
+            padding: 0.9rem;
+            border-radius: 4px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+            margin-top: 0.5rem;
+        }
+        .submit-btn:hover {
+            background: linear-gradient(135deg, #00ffff 0%, #008888 100%);
+            color: #0a0a0c;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+        }
+
+        /* --- MODAL POPUP PORTAL --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(5, 5, 8, 0.85);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+        .modal-overlay.active { opacity: 1; pointer-events: auto; }
+        .modal-box {
+            background: linear-gradient(145deg, #181a24, #0c0d12);
+            border: 2px solid #00ffff;
+            padding: 2.5rem;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 0 40px rgba(0, 255, 255, 0.4), inset 0 0 20px rgba(0, 255, 255, 0.2);
+            transform: scale(0.8);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .modal-overlay.active .modal-box { transform: scale(1); }
+        .modal-box h3 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.4rem;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px #00ffff;
+        }
+        .modal-box p {
+            font-size: 0.85rem;
+            color: #a0a0b0;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+        .modal-close-btn {
+            background: #00ffff;
+            color: #0a0a0c;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            cursor: pointer;
+            border-radius: 4px;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+        .modal-close-btn:hover {
+            background: #ffffff;
+            box-shadow: 0 0 15px #ffffff;
+        }
+
+        /* --- FOOTER & SOCIAL LINKS --- */
+        footer {
+            background: #060608;
+            border-top: 1px solid #1a1c26;
+            padding: 3rem 1.5rem 5rem;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 1.5rem;
+        }
+        .social-emblem {
+            width: 45px; height: 45px;
+            border-radius: 50%;
+            border: 1px solid #404556;
+            background: #10121a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #c0c0d0;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        .social-emblem:hover {
+            border-color: #00ffff;
+            color: #00ffff;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+            transform: translateY(-3px);
+        }
+        .footer-text {
+            font-size: 0.75rem;
+            color: #6a6f80;
+            letter-spacing: 1px;
+        }
+
+        /* --- BOTTOM FOG (MOVING CLOUDS) --- */
+        .bottom-fog {
+            position: fixed;
+            bottom: 0; left: 0; width: 200%; height: 120px;
+            background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1000 100" xmlns="http://www.w3.org/2000/svg"><path d="M0,50 C150,90 350,10 500,60 C650,110 850,20 1000,50 L1000,100 L0,100 Z" fill="rgba(20,22,32,0.6)"/></svg>') repeat-x;
+            background-size: 1000px 120px;
+            z-index: 1;
+            pointer-events: none;
+            animation: fog-drift 25s linear infinite;
+        }
+        @keyframes fog-drift {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
+        /* --- AUDIO VISUALIZER WIDGET --- */
+        .audio-widget {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 180px;
+            background: linear-gradient(145deg, #1a1d24, #0f1118);
+            border: 1px solid #3a4a5a;
+            border-radius: 8px;
+            overflow: hidden;
+            z-index: 100;
+        }
+        .audio-widget-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 1rem;
+            background: #0d121a;
+            border-bottom: 1px solid #2a3a4a;
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 0.75rem;
+            color: #a0b0c0;
+            letter-spacing: 1px;
+        }
+        .audio-widget-title { flex: 1; text-align: left; }
+        .audio-widget-toggle {
+            background: none;
+            border: none;
+            color: #6a7a8a;
+            font-size: 1rem;
+            cursor: pointer;
+            padding: 0 0.5rem;
+        }
+        .audio-widget-toggle.active { color: #00ffff; }
+        .audio-widget-player { padding: 1rem; }
+        .audio-widget-player label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.65rem;
+            color: #6a7a8a;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .visualizer {
+            height: 50px;
+            background: #0a0d15;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 0.5rem 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            padding: 0 4px;
+        }
+        .visualizer-bar {
+            width: 12px;
+            background: linear-gradient(180deg, #00ffff, #60c0ff);
+            border-radius: 2px;
+            height: 10px;
+            transition: height 0.1s ease;
+        }
+        .audio-controls {
+            display: flex;
+            justify-content: space-around;
+            padding: 0.5rem 1rem;
+            background: #0a0d15;
+            font-size: 0.7rem;
+            color: #6a7a8a;
+        }
+        .audio-control {
+            background: none;
+            border: none;
+            color: #6a7a8a;
+            cursor: pointer;
+            padding: 0 0.3rem;
+        }
+        .audio-control.active { color: #00ffff; }
+
+        /* --- CLICK FEEDBACK EFFECT --- */
+        .click-feedback {
+            position: fixed;
+            width: 10px; height: 10px;
+            background: #00ffff;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transform: scale(0);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        /* --- NAVIGATION BAR --- */
+        .nav-bar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 1.5rem;
+            z-index: 50;
+            background: rgba(10, 10, 12, 0.85);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(224, 224, 224, 0.15);
+        }
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-brand {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.2rem;
+            font-weight: 900;
+            color: #e0e0e0;
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        .nav-links a {
+            color: #a0a0b0;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #00ffff;
+            text-shadow: 0 0 8px rgba(0, 255, 255, 0.5);
+        }
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        .nav-toggle span {
+            width: 20px;
+            height: 2px;
+            background: #e0e0e0;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        .nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(5, 5, 8, 0.95);
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .nav-overlay.open { opacity: 1; pointer-events: auto; }
+        .nav-overlay ul {
+            list-style: none;
+            text-align: center;
+        }
+        .nav-overlay li {
+            margin: 1.5rem 0;
+        }
+        .nav-overlay a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+        .nav-overlay a:hover { color: #00ffff; }
+        .nav-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: none;
+            border: none;
+            color: #a0a0b0;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* --- SECTION IDs & SCROLL OFFSET --- */
+        html { scroll-behavior: smooth; }
+        section { scroll-margin-top: 80px; }
+
+        /* --- ABOUT SECTION --- */
+        .about-section {
+            margin: 4rem 0 2rem;
+            padding: 3rem 2rem;
+            background: linear-gradient(145deg, #12131a, #0a0a0e);
+            border: 1px solid #2a2d3a;
+            border-radius: 8px;
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .about-card {
+            background: #0d0e14;
+            border: 1px solid #2a2d3a;
+            border-radius: 6px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+        .about-icon {
+            font-size: 2rem;
+            color: #00ffff;
+        }
+        .about-card h4 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1rem;
+            color: #e0e0e0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .about-card p {
+            font-size: 0.8rem;
+            color: #9090a0;
+            line-height: 1.6;
+        }
+
+        /* --- CONTACT INFO SECTION --- */
+        .contact-info {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .contact-item {
+            text-align: center;
+        }
+        .contact-item i {
+            font-size: 1.5rem;
+            color: #00ffff;
+            margin-bottom: 0.5rem;
+        }
+        .contact-item strong {
+            color: #e0e0e0;
+        }
+        .contact-item span {
+            color: #8a8a9a;
+            font-size: 0.8rem;
+            display: block;
+        }
+
+        /* RESPONSIVE NAVBAR */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .nav-toggle { display: flex; }
+            .main-wrapper { padding: 1.5rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION BAR -->
+    <nav class="nav-bar">
+        <div class="nav-container">
+            <a href="#home" class="nav-brand">BOYLE BYTE</a>
+            <ul class="nav-links">
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#about">Tentang</a></li>
+                <li><a href="#tech-stack">Skill</a></li>
+                <li><a href="#projects">Proyek</a></li>
+                <li><a href="#contact">Kontak</a></li>
+                <li><button class="theme-toggle-btn" onclick="toggleTheme()" title="Ganti Tema">🌙</button></li>
+            </ul>
+            <button class="nav-toggle" onclick="toggleMobileNav()">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MOBILE NAV OVERLAY -->
+    <div class="nav-overlay" id="nav-overlay">
+        <button class="nav-close" onclick="toggleMobileNav()">✕</button>
+        <ul>
+            <li><a href="#home" onclick="toggleMobileNav()">Beranda</a></li>
+            <li><a href="#about" onclick="toggleMobileNav()">Tentang</a></li>
+            <li><a href="#tech-stack" onclick="toggleMobileNav()">Skill</a></li>
+            <li><a href="#projects" onclick="toggleMobileNav()">Proyek</a></li>
+            <li><a href="#contact" onclick="toggleMobileNav()">Kontak</a></li>
+        </ul>
+    </div>
+
+    <canvas id="cosmic-bg"></canvas>
+    <div class="bottom-fog"></div>
+
+    <div class="main-wrapper">
+        <!-- Hero Section -->
+        <section class="hero-section" id="home">
+            <div class="hero-container">
+                <!-- Orbit Technology Rings -->
+                <div class="orbit-wrapper">
+                    <div class="orbit-ring orbit-inner">
+                        <div class="orbit-item" title="Next.js"><i class="devicon-nextjs-original"></i></div>
+                        <div class="orbit-item" title="NestJS"><i class="devicon-nestjs-plain"></i></div>
+                        <div class="orbit-item" title="Node.js"><i class="devicon-nodejs-plain"></i></div>
+                        <div class="orbit-item" title="Supabase"><i class="devicon-supabase-plain"></i></div>
+                        <div class="orbit-item" title="PostgreSQL"><i class="devicon-postgresql-plain"></i></div>
+                        <div class="orbit-item" title="Prisma"><i class="devicon-prisma-original"></i></div>
+                    </div>
+                    <div class="orbit-ring orbit-outer">
+                        <div class="orbit-item" title="TypeScript"><i class="devicon-typescript-plain"></i></div>
+                        <div class="orbit-item" title="Tailwind CSS"><i class="devicon-tailwindcss-plain"></i></div>
+                        <div class="orbit-item" title="Git / GitHub"><i class="devicon-git-plain"></i></div>
+                        <div class="orbit-item" title="Docker"><i class="devicon-docker-plain"></i></div>
+                        <div class="orbit-item" title="REST & GraphQL"><i class="devicon-graphql-plain"></i></div>
+                        <div class="orbit-item" title="Vercel"><i class="devicon-vercel-original"></i></div>
+                    </div>
+                </div>
+                
+                <!-- Profile with Soft Cyan Glow -->
+                <div class="profile-container">
+                    <div class="photo-glow"></div>
+                    <img src="profile.jpg" alt="Paramatama Hamzah Boyle Fairuz - Fullstack Developer">
+                </div>
+                
+                <!-- Text Content -->
+                <div class="hero-content">
+                    <div class="status-badge">Fullstack Developer</div>
+                    <h1>PARAMATAMA HAMZAH BOYLE FAIRUZ</h1>
+                    <p class="hero-desc">Boyle Byte Dev House &mdash; Fullstack Developer berbasis di Yogyakarta, Jawa Tengah. Saya membangun aplikasi full-stack berkualitas tinggi untuk UMKM dan profesional.</p>
+                    <div class="hero-cta">
+                        <a href="#projects" class="cta-btn primary">Lihat Proyek</a>
+                        <a href="#contact" class="cta-btn secondary">Hubungi Saya</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tech Stack Section -->
+        <h2 class="section-title" id="tech-stack">Tech Stack</h2>
+        <div class="tech-grid">
+            <div class="hexagon-badge"><i class="devicon-nodejs-plain colored"></i><span>Node.js</span></div>
+            <div class="hexagon-badge"><i class="devicon-nestjs-plain colored"></i><span>NestJS</span></div>
+            <div class="hexagon-badge"><i class="devicon-nextjs-original"></i><span>Next.js</span></div>
+            <div class="hexagon-badge"><i class="devicon-postgresql-plain colored"></i><span>PostgreSQL</span></div>
+            <div class="hexagon-badge"><i class="devicon-prisma-original"></i><span>Prisma</span></div>
+            <div class="hexagon-badge"><i class="devicon-vercel-original"></i><span>Vercel</span></div>
+        </div>
+
+        <!-- About Section -->
+        <section class="about-section" id="about">
+            <h2 class="section-title" style="margin-top: 0;">Tentang Saya</h2>
+            <div style="color: #a0a0b0; max-width: 800px; margin: 0 auto; font-size: 0.9rem; line-height: 1.8; text-align: justify;">
+                <p style="margin-bottom: 1rem;">
+                    Halo! Saya <strong>Paramatama Hamzah Boyle Fairuz</strong>, seorang Web Developer &amp; pendiri Boyle Byte Dev House berbasis di Yogyakarta. Lulusan <strong>MA</strong> yang memiliki semangat tinggi untuk memberikan manfaat bagi lingkungan sekitar melalui teknologi.
+                </p>
+                <p style="margin-bottom: 1rem;">
+                    Perjalanan saya bermula dari dasar-dasar web seperti HTML, CSS, JavaScript, PHP, dan phpMyAdmin. Seiring berjalannya waktu, saya terus belajar dan kini berfokus pada teknologi modern: <strong>NestJS, Next.js, TypeScript, Neon, Supabase, dan Git &amp; GitHub</strong>.
+                </p>
+                <p style="margin-bottom: 1rem;">
+                    Saya belajar melalui Pondok IT, BLK Kudus, serta secara mandiri lewat tutorial YouTube dan pendampingan AI. Saat ini, saya fokus mengembangkan aplikasi full-stack berperforma tinggi. Salah satu proyek yang sudah dideploy ke Vercel adalah <strong>Taskify Kanban</strong>, aplikasi papan tugas untuk efisiensi manajemen kerja. Saat ini saya juga sedang mengembangkan <strong>Minipost</strong>, aplikasi POS &amp; manajemen stok untuk membantu pelaku usaha.
+                </p>
+            </div>
+
+            <!-- Visi & Misi Box -->
+            <div style="margin-top: 2rem; background: #0d0e14; border: 1px solid #2a2d3a; border-radius: 6px; padding: 1.5rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+                <h4 style="font-family: 'Cinzel Decorative', serif; color: #00ffff; font-size: 1rem; margin-bottom: 0.8rem; letter-spacing: 1px;">🎯 Visi</h4>
+                <p style="color: #9090a0; font-size: 0.85rem; line-height: 1.6; margin-bottom: 1.2rem;">
+                    Menjadi pengembang yang bermanfaat bagi lingkungan sekitar melalui teknologi yang sederhana, mudah digunakan, dan membantu memecahkan masalah sehari-hari.
+                </p>
+                <h4 style="font-family: 'Cinzel Decorative', serif; color: #00ffff; font-size: 1rem; margin-bottom: 0.8rem; letter-spacing: 1px;">🚀 Misi</h4>
+                <ul style="color: #9090a0; font-size: 0.85rem; line-height: 1.6; padding-left: 1.2rem; display: flex; flex-direction: column; gap: 0.4rem;">
+                    <li>Terus belajar dan menguasai teknologi baru secara konsisten.</li>
+                    <li>Membangun aplikasi yang fungsional, praktis, dan mudah diakses oleh siapa saja.</li>
+                    <li>Menciptakan solusi yang membantu memudahkan pekerjaan dan aktivitas orang lain.</li>
+                    <li>Berbagi pengetahuan dan berkembang bersama komunitas sesama pengembang.</li>
+                </ul>
+            </div>
+
+            <div class="about-grid" style="margin-top: 2.5rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
+                <div class="about-card">
+                    <div class="about-icon">⚡</div>
+                    <h4>Fullstack Stack</h4>
+                    <p>NestJS &amp; Next.js architecture, Neon PostgreSQL database, TypeScript, &amp; Vercel deployment.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">🏛️</div>
+                    <h4>Boyle Byte Dev House</h4>
+                    <p>Solusi perangkat lunak profesional &amp; portofolio digital berdampak tinggi untuk UMKM dan solopreneur.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">🎓</div>
+                    <h4>Edukasi &amp; Belajar</h4>
+                    <p>Lulusan MA, alumnus Pondok IT &amp; BLK Kudus, pembelajar mandiri via YouTube &amp; AI.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">📍</div>
+                    <h4>Lokasi &amp; Alamat</h4>
+                    <p>Undaan Lor, Kab. Kudus, Jawa Tengah (<a href="https://maps.app.goo.gl/PKMA7tS5xYSBaQ3W6" target="_blank" style="color: var(--accent-cyan); text-decoration: none;">Buka Peta</a>)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Projects Section -->
+        <h2 class="section-title" id="projects">Featured Projects</h2>
+        
+        <!-- Filter Badges -->
+        <div class="filter-container">
+            <button class="filter-btn active" onclick="filterProjects('all', this)">All Arcana</button>
+            <button class="filter-btn" onclick="filterProjects('fullstack', this)">Fullstack</button>
+            <button class="filter-btn" onclick="filterProjects('nestjs', this)">NestJS</button>
+            <button class="filter-btn" onclick="filterProjects('nextjs', this)">Next.js</button>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="projects-grid">
+            <div class="project-card" data-category="fullstack" data-tilt data-tilt-max="10" data-tilt-speed="400">
+                <div class="card-category">Fullstack</div>
+                <h3 class="card-title">Gothic POS System</h3>
+                <p class="card-desc">Point of sales & inventory application built with Next.js and NestJS monorepo architecture.</p>
+                <div class="card-tags">
+                    <span class="tag">Next.js</span>
+                    <span class="tag">NestJS</span>
+                    <span class="tag">PostgreSQL</span>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="nestjs" data-tilt data-tilt-max="10" data-tilt-speed="400">
+                <div class="card-category">Backend NestJS</div>
+                <h3 class="card-title">Grimoire LMS API</h3>
+                <p class="card-desc">Robust backend RESTful services for Learning Management System using Prisma ORM & Auth.</p>
+                <div class="card-tags">
+                    <span class="tag">NestJS</span>
+                    <span class="tag">Prisma</span>
+                    <span class="tag">PostgreSQL</span>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="nextjs" data-tilt data-tilt-max="10" data-tilt-speed="400">
+                <div class="card-category">Frontend Next.js</div>
+                <h3 class="card-title">Boyle Byte Dev Site</h3>
+                <p class="card-desc">High performance corporate software agency landing page with dark theme aesthetics.</p>
+                <div class="card-tags">
+                    <span class="tag">Next.js 16</span>
+                    <span class="tag">Tailwind</span>
+                    <span class="tag">Vercel</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Terminal Playground -->
+        <div class="terminal-section">
+            <div class="terminal-header">
+                <h3>Terminal Playground</h3>
+                <div class="terminal-actions">
+                    <div class="terminal-minimize">─</div>
+                    <div class="terminal-close">✕</div>
+                </div>
+            </div>
+            <div class="terminal-content" id="terminal-content"></div>
+            <form class="terminal-form" onsubmit="handleTerminalSubmit(event)">
+                <div class="terminal-input-line">
+                    <span class="terminal-prompt">$</span>
+                    <input type="text" class="terminal-input" placeholder="Type a command (help, about, projects)..." autocomplete="off">
+                </div>
+            </form>
+        </div>
+
+        <!-- Contact Section -->
+        <section class="contact-section" id="contact">
+            <h2 class="section-title" style="margin-top: 0;">Summon Connection</h2>
+            <form class="contact-form" onsubmit="handleContactSubmit(event)">
+                <div class="form-group">
+                    <label>Your Alias</label>
+                    <input type="text" class="form-control" placeholder="Enter your name..." required>
+                </div>
+                <div class="form-group">
+                    <label>Signal Frequency (Email)</label>
+                    <input type="email" class="form-control" placeholder="Enter your email..." required>
+                </div>
+                <div class="form-group">
+                    <label>Transmission Message</label>
+                    <textarea class="form-control" placeholder="Write your message..." required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Transmit Signal</button>
+            </form>
+        </section>
+    </div>
+
+    <!-- Footer & Social Links -->
+    <footer>
+        <div class="social-icons">
+            <a href="https://github.com/hamzahrama" target="_blank" class="social-emblem" title="GitHub">🐙</a>
+            <a href="https://instagram.com/prmtm_hmzh" target="_blank" class="social-emblem" title="Instagram">📸</a>
+            <a href="mailto:hamzahrama43@gmail.com" class="social-emblem" title="Email">✉</a>
+            <a href="https://wa.me/" target="_blank" class="social-emblem" title="WhatsApp">💬</a>
+        </div>
+        <p class="footer-text">&copy; 2026 Dark Gothic Cosmic Portfolio. All rights reserved.</p>
+    </footer>
+
+    <!-- Portal Modal Popup -->
+    <div class="modal-overlay" id="portal-modal">
+        <div class="modal-box">
+            <h3>Transmission Successful</h3>
+            <p>Your signal has successfully penetrated the cosmic veil. I will respond to your frequency shortly.</p>
+            <button class="modal-close-btn" onclick="closeModal()">Close Portal</button>
+        </div>
+    </div>
+
+    <!-- Audio Visualizer Widget -->
+    <div class="audio-widget">
+        <div class="audio-widget-header">
+            <span class="audio-widget-title">Coding Music</span>
+            <button class="audio-widget-toggle" onclick="toggleAudio()" title="Toggle Audio">▶</button>
+        </div>
+        <div class="audio-widget-player">
+            <label>Avenged Sevenfold</label>
+            <div id="music-player">
+                <!-- Mode: Single Song or Playlist -->
+                <div id="single-mode">
+                    <iframe width="100%" height="80" src="https://www.youtube.com/embed/KVjBCT2Lc94?autoplay=0&controls=1&showinfo=0" title="Avenged Sevenfold - A Little Piece Of Heaven" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div id="playlist-mode" style="display: none; margin-top: 1rem;">
+                    <p style="color: #90a0b0; font-size: 0.7rem; margin-bottom: 0.5rem;">Full Album Playlist:</p>
+                    <iframe width="100%" height="300" src="https://www.youtube.com/embed/27v6zpRQ5p4?autoplay=0&controls=1&showinfo=0" title="Avenged Sevenfold Greatest Hits Full Album" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div style="margin-top: 1rem; display: flex; gap: 1rem;">
+                    <button class="audio-control" onclick="switchMode('single')">Single Track</button>
+                    <button class="audio-control" onclick="switchMode('playlist')">Full Album</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Click Feedback Element -->
+    <div class="click-feedback" id="click-feedback"></div>
+
+    <!-- Vanilla Tilt for 3D card tilt -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+
+    <script>
+        // --- THEME TOGGLE LOGIC ---
+        function toggleTheme() {
+            const body = document.body;
+            const btn = document.querySelector('.theme-toggle-btn');
+            const currentTheme = body.getAttribute('data-theme');
+            
+            if (currentTheme === 'light') {
+                body.removeAttribute('data-theme');
+                btn.textContent = '🌙';
+            } else {
+                body.setAttribute('data-theme', 'light');
+                btn.textContent = '☀️';
+            }
+        }
+
+        // --- 60 FPS OPTIMIZED INTERACTIVE CANVAS BACKGROUND ---
+        const canvas = document.getElementById('cosmic-bg');
+        const ctx = canvas.getContext('2d');
+        let width, height, stars = [], bats = [], birds = [], moon = { x: 0, y: 0, radius: 40 };
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            moon.x = width * 0.8;
+            moon.y = 100;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        // Initialize Stars
+        for (let i = 0; i < 150; i++) {
+            stars.push({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                radius: Math.random() * 1.5,
+                alpha: Math.random(),
+                speed: Math.random() * 0.015 + 0.005,
+                parallax: Math.random() * 0.5 + 0.1
+            });
+        }
+
+        // Initialize Bats
+        for (let i = 0; i < 6; i++) {
+            bats.push({
+                x: Math.random() * width,
+                y: Math.random() * (height / 2),
+                size: Math.random() * 10 + 15,
+                speedX: Math.random() * 2 + 1,
+                wingPhase: 0,
+                parallax: 0.8
+            });
+        }
+
+        // Initialize Birds
+        for (let i = 0; i < 4; i++) {
+            birds.push({
+                x: Math.random() * width,
+                y: Math.random() * (height / 2),
+                size: Math.random() * 5 + 8,
+                speedX: Math.random() * 1.5 + 0.5,
+                wingPhase: 0,
+                parallax: 0.6
+            });
+        }
+
+        function drawBat(b) {
+            ctx.fillStyle = document.body.getAttribute('data-theme') === 'light' ? 'rgba(0,0,0,0.4)' : 'rgba(255,255,255,0.4)';
+            ctx.beginPath();
+            const wingY = Math.sin(b.wingPhase) * (b.size / 2);
+            // Simple Bat Shape
+            ctx.moveTo(b.x, b.y);
+            ctx.quadraticCurveTo(b.x - b.size, b.y - wingY, b.x - b.size * 1.5, b.y + wingY);
+            ctx.lineTo(b.x, b.y + b.size / 4);
+            ctx.lineTo(b.x + b.size * 1.5, b.y + wingY);
+            ctx.quadraticCurveTo(b.x + b.size, b.y - wingY, b.x, b.y);
+            ctx.fill();
+        }
+
+        function drawBird(b) {
+            ctx.strokeStyle = document.body.getAttribute('data-theme') === 'light' ? 'rgba(0,0,0,0.3)' : 'rgba(255,255,255,0.3)';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            const wingY = Math.sin(b.wingPhase) * (b.size / 2);
+            ctx.moveTo(b.x - b.size, b.y + wingY);
+            ctx.quadraticCurveTo(b.x, b.y - wingY, b.x + b.size, b.y + wingY);
+            ctx.stroke();
+        }
+
+        function animateCanvas() {
+            const isLight = document.body.getAttribute('data-theme') === 'light';
+            ctx.fillStyle = isLight ? '#f4f4f6' : '#0a0a0c';
+            ctx.fillRect(0, 0, width, height);
+
+            const scrollY = window.scrollY;
+
+            // Moon
+            const moonY = moon.y + (scrollY * 0.2);
+            ctx.fillStyle = isLight ? 'rgba(255, 200, 0, 0.2)' : 'rgba(224, 224, 224, 0.6)';
+            ctx.beginPath();
+            ctx.arc(moon.x, moonY, moon.radius, 0, Math.PI * 2);
+            ctx.fill();
+            if (!isLight) { // Crescent effect in dark mode
+                ctx.fillStyle = '#0a0a0c';
+                ctx.beginPath();
+                ctx.arc(moon.x + 15, moonY - 5, moon.radius, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            // Stars
+            stars.forEach(s => {
+                const sY = (s.y + (scrollY * s.parallax)) % height;
+                s.alpha += s.speed;
+                if (s.alpha > 1 || s.alpha < 0) s.speed = -s.speed;
+                ctx.fillStyle = isLight ? `rgba(0, 0, 0, ${Math.abs(s.alpha) * 0.2})` : `rgba(224, 224, 224, ${Math.abs(s.alpha)})`;
+                ctx.beginPath();
+                ctx.arc(s.x, sY, s.radius, 0, Math.PI * 2);
+                ctx.fill();
+            });
+
+            // Bats
+            bats.forEach(b => {
+                b.x = (b.x + b.speedX) % width;
+                const bY = (b.y + (scrollY * b.parallax)) % height;
+                b.wingPhase += 0.2;
+                const drawObj = { ...b, y: bY };
+                drawBat(drawObj);
+            });
+
+            // Birds
+            birds.forEach(b => {
+                b.x = (b.x + b.speedX) % width;
+                const bY = (b.y + (scrollY * b.parallax)) % height;
+                b.wingPhase += 0.1;
+                const drawObj = { ...b, y: bY };
+                drawBird(drawObj);
+            });
+
+            // Fog at bottom
+            let grad = ctx.createLinearGradient(0, height * 0.7, 0, height);
+            grad.addColorStop(0, isLight ? 'rgba(244, 244, 246, 0)' : 'rgba(15, 15, 25, 0)');
+            grad.addColorStop(1, isLight ? 'rgba(200, 200, 210, 0.8)' : 'rgba(5, 5, 10, 0.95)');
+            ctx.fillStyle = grad;
+            ctx.fillRect(0, 0, width, height);
+
+            requestAnimationFrame(animateCanvas);
+        }
+        requestAnimationFrame(animateCanvas);
+
+        // --- MOBILE NAV TOGGLE ---
+        function toggleMobileNav() {
+            const overlay = document.getElementById('nav-overlay');
+            overlay.classList.toggle('open');
+        }
+
+        // --- SCROLL SPY ACTIVE NAV ---
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section, .terminal-section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            let current = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.pageYOffset >= sectionTop - 120) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        function filterProjects(category, btn) {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            document.querySelectorAll('.project-card').forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // --- TERMINAL PLAYGROUND ---
+        const terminalContent = document.getElementById('terminal-content');
+        const commands = {
+            help: 'Available commands:\n- help : Show help list\n- about : Developer profile info\n- skills : Tech stack overview\n- projects : List of featured projects\n- curl /api/status : Check backend status\n- clear : Clear terminal',
+            about: 'Paramatama Hamzah Boyle Fairuz - Owner of Boyle Byte Dev House (Yogyakarta). Fullstack Developer specializing in NestJS, Next.js, and PostgreSQL architecture.',
+            skills: 'Languages & Tools: Node.js, NestJS, Next.js, PostgreSQL, Prisma, Vercel, Git.',
+            projects: 'Featured: Gothic POS System, Grimoire LMS API, Boyle Byte Dev Site.',
+            'curl /api/status': 'HTTP/1.1 200 OK\n{\n  "status": "online",\n  "service": "DarkGothic API",\n  "uptime": "99.9%"\n}'
+        };
+
+        function termOut(text, isError = false) {
+            const line = document.createElement('div');
+            line.className = 'terminal-output';
+            line.style.color = isError ? '#ff6060' : '#c0c0d0';
+            line.textContent = text;
+            terminalContent.appendChild(line);
+            terminalContent.scrollTop = terminalContent.scrollHeight;
+        }
+
+        function handleTerminalSubmit(e) {
+            e.preventDefault();
+            const inputEl = e.target.querySelector('.terminal-input');
+            const val = inputEl.value.trim().toLowerCase();
+            
+            if (!val) return;
+
+            termOut('$ ' + val);
+
+            if (val === 'clear') {
+                terminalContent.innerHTML = '';
+            } else if (commands[val]) {
+                termOut(commands[val]);
+            } else {
+                termOut('Command not recognized: ' + val + '. Type "help" for options.', true);
+            }
+
+            inputEl.value = '';
+        }
+
+        // Initialize terminal greeting
+        termOut('$ system initialized. type "help" for commands.');
+
+        // --- CONTACT FORM & MODAL ---
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            const modal = document.getElementById('portal-modal');
+            modal.classList.add('active');
+            e.target.reset();
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('portal-modal');
+            modal.classList.remove('active');
+        }
+
+        // --- AUDIO VISUALIZER & WIDGET ---
+        const bgAudio = document.getElementById('bg-audio');
+        let isAudioPlaying = false;
+        let vizInterval = null;
+
+        function toggleAudio() {
+            const toggleBtn = document.querySelector('.audio-widget-toggle');
+            if (isAudioPlaying) {
+                bgAudio.pause();
+                isAudioPlaying = false;
+                toggleBtn.textContent = '▶';
+                toggleBtn.classList.remove('active');
+                clearInterval(vizInterval);
+                resetVisualizerBars();
+            } else {
+                bgAudio.play().then(() => {
+                    isAudioPlaying = true;
+                    toggleBtn.textContent = '❚❚';
+                    toggleBtn.classList.add('active');
+                    startVisualizer();
+                }).catch(err => {
+                    console.log('Audio autoplay blocked or failed:', err);
+                });
+            }
+        }
+
+        function switchMode(mode) {
+            document.getElementById('single-mode').style.display = mode === 'single' ? 'block' : 'none';
+            document.getElementById('playlist-mode').style.display = mode === 'playlist' ? 'block' : 'none';
+        }
+
+        // --- CLICK FEEDBACK EFFECT ---
+        const clickFeedback = document.getElementById('click-feedback');
+        window.addEventListener('click', function(e) {
+            clickFeedback.style.left = (e.clientX - 5) + 'px';
+            clickFeedback.style.top = (e.clientY - 5) + 'px';
+            clickFeedback.style.transform = 'scale(1)';
+            clickFeedback.style.opacity = '1';
+            setTimeout(() => {
+                clickFeedback.style.transform = 'scale(0)';
+                clickFeedback.style.opacity = '0';
+            }, 300);
+        });
+    </script>
+</body>
+</html>
