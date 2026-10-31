@@ -20,6 +20,7 @@ class PortfolioApp {
         this.setupClickFeedback();
         this.setupScrollSpy();
         this.loadExternalResources();
+        this.setupLivingTechOrbit();
     }
 
     // Theme Toggle System
@@ -565,6 +566,15 @@ Use: 'projects <project-name>' for details`,
         }
     }
 
+    // Living Technology Orbit Setup
+    setupLivingTechOrbit() {
+        // Only initialize if living tech orbit section exists
+        if (document.querySelector('.tech-orbit-section')) {
+            // Initialize the living tech orbit animation
+            window.techOrbit = new LivingTechOrbit();
+        }
+    }
+
     // Initialize app when DOM is ready
     run() {
         if (document.readyState === 'loading') {
@@ -687,3 +697,222 @@ style.textContent = `
 `;
 
 document.head.appendChild(style);
+
+// Tech Orbit and Animation Features
+function setupTechOrbit() {
+    const orbitItems = document.querySelectorAll('.orbit-item-tech');
+    const techProfile = document.querySelector('.tech-profile-image');
+    
+    if (!orbitItems.length || !techProfile) return;
+    
+    // Add click handlers to tech items
+    orbitItems.forEach((item, index) => {
+        item.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            // Get the tech name from title attribute
+            const techName = item.getAttribute('title');
+            
+            // Create ripple effect
+            createRipple(item, e);
+            
+            // Show tech info in profile glow
+            showTechInfo(techName);
+            
+            // Highlight related items
+            highlightRelatedTechItems(index);
+            
+            // Show notification
+            showNotification(`Exploring ${techName} technology!`, 'info');
+        });
+        
+        // Add hover sound effect (visual)
+        item.addEventListener('mouseenter', () => {
+            item.style.filter = 'brightness(1.5)';n        });
+        
+        item.addEventListener('mouseleave', () => {
+            item.style.filter = 'brightness(1)';
+        });
+    });
+    
+    // Profile hover effects
+    techProfile.addEventListener('mouseenter', () => {
+        techProfile.style.animationPlayState = 'paused';
+    });
+    
+    techProfile.addEventListener('mouseleave', () => {
+        techProfile.style.animationPlayState = 'running';
+    });
+    
+    // Auto-rotate through tech items (every 3 seconds)
+    let currentIndex = 0;
+    setInterval(() => {
+        rotateTechHighlight();
+    }, 3000);
+}
+
+function createRipple(event, target) {
+    const ripple = document.createElement('div');
+    ripple.className = 'tech-ripple';
+    
+    const rect = target.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+    
+    ripple.style.left = x + 'px';
+    ripple.style.top = y + 'px';
+    
+    target.appendChild(ripple);
+    
+    setTimeout(() => {
+        ripple.remove();
+    }, 600);
+}
+
+function showTechInfo(techName) {
+    const profileGlow = document.querySelector('.tech-profile-glow');
+    if (!profileGlow) return;
+    
+    // Change glow color based on tech
+    const colors = {
+        'Next.js': 'rgba(59, 130, 246, 0.5)',
+        'React': 'rgba(97, 219, 213, 0.5)',
+        'TypeScript': 'rgba(49, 120, 198, 0.5)',
+        'Tailwind CSS': 'rgba(56, 189, 248, 0.5)',
+        'Node.js': 'rgba(134, 220, 143, 0.5)',
+        'NestJS': 'rgba(255, 107, 107, 0.5)',
+        'PostgreSQL': 'rgba(0, 112, 192, 0.5)',
+        'PHP': 'rgba(119, 93, 240, 0.5)',
+        'phpMyAdmin': 'rgba(0, 102, 204, 0.5)',
+        'Supabase': 'rgba(255, 65, 54, 0.5)',
+        'Neon': 'rgba(24, 180, 244, 0.5)'
+    };
+    
+    const color = colors[techName] || 'rgba(59, 130, 246, 0.5)';
+    profileGlow.style.background = `radial-gradient(circle, ${color} 0%, transparent 70%)`;
+    
+    // Reset after 2 seconds
+    setTimeout(() => {
+        profileGlow.style.background = 'radial-gradient(circle, rgba(59, 130, 246, 0.4) 0%, transparent 70%)';
+    }, 2000);
+}
+
+function highlightRelatedTechItems(index) {
+    orbitItems = document.querySelectorAll('.orbit-item-tech');
+    orbitItems.forEach((item, i) => {
+        const distance = Math.abs(i - index);
+        if (distance === 0) {
+            item.style.transform = 'scale(1.5)';
+            item.style.borderColor = '#60a5fa';
+            item.style.boxShadow = '0 0 30px rgba(59, 130, 246, 0.8)';
+        } else if (distance <= 2) {
+            item.style.opacity = '0.7';
+            item.style.transform = 'scale(1.1)';
+        }
+    });
+    
+    // Reset after 2 seconds
+    setTimeout(() => {
+        orbitItems.forEach(item => {
+            item.style.transform = '';
+            item.style.borderColor = '';
+            item.style.boxShadow = '';
+            item.style.opacity = '';
+        });
+    }, 2000);
+}
+
+function rotateTechHighlight() {
+    const orbitItems = document.querySelectorAll('.orbit-item-tech');
+    const randomIndex = Math.floor(Math.random() * orbitItems.length);
+    
+    // Remove previous highlight
+    orbitItems.forEach(item => {
+        item.style.boxShadow = item.style.boxShadow.replace('0 0 30px', '0 0 15px');
+        item.style.transform = '';
+    });
+    
+    // Add new highlight
+    const targetItem = orbitItems[randomIndex];
+    targetItem.style.transform = 'scale(1.2)';
+    targetItem.style.boxShadow = '0 0 30px rgba(59, 130, 246, 0.6)';
+    
+    // Show tech info
+    const techName = targetItem.getAttribute('title');
+    showTechInfo(techName);
+}
+
+function setupTechProfileAnimation() {
+    const profileImage = document.querySelector('.tech-profile-image');
+    if (!profileImage) return;
+    
+    // Add magnetic effect
+    const orbitContainer = document.querySelector('.orbit-container');
+    if (!orbitContainer) return;
+    
+    orbitContainer.addEventListener('mousemove', (e) => {
+        const rect = orbitContainer.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        
+        const distance = Math.sqrt(x * x + y * y);
+        const maxDistance = 200;
+        
+        if (distance < maxDistance) {
+            const angle = Math.atan2(y, x);
+            const magnetDistance = (1 - distance / maxDistance) * 30;
+            
+            profileImage.style.transform += ` translate(${Math.cos(angle) * magnetDistance}px, ${Math.sin(angle) * magnetDistance}px)`;
+        }
+    });
+    
+    orbitContainer.addEventListener('mouseleave', () => {
+        profileImage.style.transform = '';
+    });
+}
+
+// Initialize tech features
+function initTechFeatures() {
+    if (document.querySelector('.tech-orbit-section')) {
+        setupTechOrbit();
+        setupTechProfileAnimation();
+    }
+}
+
+// Add CSS for ripple effect
+const style = document.createElement('style');
+style.textContent = `
+.tech-ripple {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.8) 0%, transparent 70%);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    animation: rippleEffect 0.6s ease-out;
+    z-index: 100;
+}
+
+@keyframes rippleEffect {
+    to {
+        width: 400px;
+        height: 400px;
+        opacity: 0;
+    }
+}
+`;
+document.head.appendChild(style);
+
+// Export for global access
+window.TechFeatures = {
+    setupTechOrbit,
+    initTechFeatures
+};
+
+// Initialize on DOM ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTechFeatures);
+} else {
+    initTechFeatures();
+}
