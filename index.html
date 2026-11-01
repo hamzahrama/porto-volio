@@ -3,379 +3,385 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paramatama Hamzah | Portfolio</title>
+    <title>Paramatama Hamzah Boyle Fairuz | Living Technology Orbit</title>
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    
+    <!-- Styles -->
     <link rel="stylesheet" href="assets/css/style.css">
+    
+    <meta name="description" content="Paramatama Hamzah Boyle Fairuz - Fullstack Developer Portfolio | Living Technology Orbit">
+    <meta name="keywords" content="fullstack developer, web developer, portfolio, next.js, react, node.js, nestjs, php">
 </head>
 <body>
-    <nav class="navbar">
+    <!-- Custom Cursor -->
+    <div class="custom-cursor" id="customCursor"></div>
+    
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="#home" class="logo">PH</a>
+            
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
-            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
-                <i class="fas fa-moon"></i>
-            </button>
-            <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+            
+            <div class="nav-controls">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </div>
     </nav>
-
+    
+    <!-- Mobile Menu -->
     <div class="mobile-nav" id="mobile-nav">
-        <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close menu">×</button>
+        <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close menu">
+            <i class="fas fa-times"></i>
+        </button>
         <ul class="mobile-nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#home" class="mobile-nav-link">Home</a></li>
+            <li><a href="#about" class="mobile-nav-link">About</a></li>
+            <li><a href="#skills" class="mobile-nav-link">Skills</a></li>
+            <li><a href="#projects" class="mobile-nav-link">Projects</a></li>
+            <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
         </ul>
     </div>
-
+    
     <main>
+        <!-- Hero Section -->
         <section class="hero" id="home">
-            <div class="hero-content">
-                <div class="profile-wrapper">
-                    <div class="profile-container">
-                        <div class="profile-image-wrapper">
-                            <img src="profile.jpg" alt="Paramatama Hamzah Boyle Fairuz" class="profile-image">
-                            <div class="profile-glow"></div>
+            <div class="background-effects">
+                <div class="grid-overlay"></div>
+                <div class="scanline"></div>
+                <div class="particles-container" id="particlesContainer"></div>
+            </div>
+            
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <div class="hero-badge">
+                            <span class="badge-dot"></span>
+                            <span>Fullstack Developer</span>
                         </div>
-                        <div class="profile-badge">
-                            <span class="status-indicator"></span>
-                            <span>Available for work</span>
+                        <h1 class="hero-title" data-text="PARAMATAMA HAMZAH">PARAMATAMA HAMZAH</h1>
+                        <p class="hero-subtitle">BOYLE FAIRUZ</p>
+                        <p class="hero-description">
+                            Building digital experiences that blend technical excellence with futuristic design. 
+                            Specializing in modern web applications with Next.js, React, Node.js, NestJS, 
+                            and comprehensive backend solutions.
+                        </p>
+                        
+                        <div class="hero-stats">
+                            <div class="hero-stat">
+                                <span class="hero-stat-number" data-count="3">0</span>
+                                <span class="hero-stat-label">Years Exp</span>
+                            </div>
+                            <div class="hero-stat-divider"></div>
+                            <div class="hero-stat">
+                                <span class="hero-stat-number" data-count="50">0</span>
+                                <span class="hero-stat-label">Projects</span>
+                            </div>
+                            <div class="hero-stat-divider"></div>
+                            <div class="hero-stat">
+                                <span class="hero-stat-number" data-count="15">0</span>
+                                <span class="hero-stat-label">Clients</span>
+                            </div>
+                        </div>
+                        
+                        <div class="hero-cta">
+                            <a href="#projects" class="btn btn-primary">
+                                <span>Explore Projects</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <a href="#contact" class="btn btn-secondary">
+                                <span>Get In Touch</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-section">
+                        <div class="profile-glow-effect"></div>
+                        <div class="profile-container">
+                            <div class="profile-frame">
+                                <img src="Clean Full-Length Streetwear Cutout.png" alt="Paramatama Hamzah Boyle Fairuz" class="profile-image">
+                                <div class="profile-scan"></div>
+                            </div>
+                            <div class="profile-status">
+                                <span class="status-pulse"></span>
+                                <span>Available for work</span>
+                            </div>
+                        </div>
+                        
+                        <div class="floating-badges">
+                            <div class="floating-badge" style="--delay: 0s">
+                                <i class="fab fa-react"></i>
+                                <span>React</span>
+                            </div>
+                            <div class="floating-badge" style="--delay: 0.5s">
+                                <i class="fab fa-node-js"></i>
+                                <span>Node.js</span>
+                            </div>
+                            <div class="floating-badge" style="--delay: 1s">
+                                <i class="devicon-nextjs-original"></i>
+                                <span>Next.js</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Technology Orbit Section -->
+        <section class="section tech-orbit-section" id="skills">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Living Technology Orbit</h2>
+                    <p class="section-subtitle">Technologies orbiting the digital ecosystem</p>
+                </div>
+                
+                <div class="orbit-wrapper">
+                    <div class="orbit-container">
+                        <canvas class="tech-orbit-canvas"></canvas>
+                        
+                        <!-- Inner Orbit - Frontend -->
+                        <div class="orbit-ring orbit-inner">
+                            <div class="orbit-item" data-tech="html5" title="HTML5"><i class="fab fa-html5"></i></div>
+                            <div class="orbit-item" data-tech="css3" title="CSS3"><i class="fab fa-css3-alt"></i></div>
+                            <div class="orbit-item" data-tech="javascript" title="JavaScript"><i class="fab fa-js"></i></div>
+                            <div class="orbit-item" data-tech="typescript" title="TypeScript"><i class="fab fa-js-square"></i></div>
+                            <div class="orbit-item" data-tech="react" title="React"><i class="fab fa-react"></i></div>
+                            <div class="orbit-item" data-tech="nextjs" title="Next.js"><i class="devicon-nextjs-original"></i></div>
+                        </div>
+                        
+                        <!-- Middle Orbit - Backend -->
+                        <div class="orbit-ring orbit-middle">
+                            <div class="orbit-item" data-tech="nodejs" title="Node.js"><i class="fab fa-node-js"></i></div>
+                            <div class="orbit-item" data-tech="nestjs" title="NestJS"><i class="fas fa-server"></i></div>
+                            <div class="orbit-item" data-tech="php" title="PHP"><i class="fab fa-php"></i></div>
+                            <div class="orbit-item" data-tech="laravel" title="Laravel"><i class="fab fa-laravel"></i></div>
+                            <div class="orbit-item" data-tech="python" title="Python"><i class="fab fa-python"></i></div>
+                        </div>
+                        
+                        <!-- Outer Orbit - Database & DevOps -->
+                        <div class="orbit-ring orbit-outer">
+                            <div class="orbit-item" data-tech="postgresql" title="PostgreSQL"><i class="fas fa-database"></i></div>
+                            <div class="orbit-item" data-tech="mysql" title="MySQL"><i class="fas fa-database"></i></div>
+                            <div class="orbit-item" data-tech="mongodb" title="MongoDB"><i class="fas fa-leaf"></i></div>
+                            <div class="orbit-item" data-tech="docker" title="Docker"><i class="fab fa-docker"></i></div>
+                            <div class="orbit-item" data-tech="git" title="Git"><i class="fab fa-git-alt"></i></div>
+                            <div class="orbit-item" data-tech="github" title="GitHub"><i class="fab fa-github"></i></div>
+                        </div>
+                        
+                        <!-- Central Core -->
+                        <div class="orbit-core">
+                            <img src="Clean Full-Length Streetwear Cutout.png" alt="Core" class="orbit-core-image">
+                            <div class="orbit-core-glow"></div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="text-content">
-                    <h1>Paramatama Hamzah</h1>
-                    <p class="subtitle">Fullstack Developer & UI/UX Designer</p>
-                    <p class="description">Building digital experiences that combine technical excellence with beautiful design. Specializing in modern web applications with Next.js, React, and Node.js. Experienced with NestJS, PostgreSQL, Neon, Supabase, PHP, and phpMyAdmin for comprehensive backend solutions.</p>
-                    
-                    <div class="cta-buttons">
-                        <a href="#projects" class="btn btn-primary">View Projects</a>
-                        <a href="#contact" class="btn btn-secondary">Get in Touch</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section" id="about">
-            <div class="container">
-                <h2 class="section-title">About Me</h2>
-                <div class="about-content">
-                    <div class="about-text">
-                        <p>Hello! I'm a passionate developer with a love for creating impactful digital experiences. I bring ideas to life through clean code and thoughtful design.</p>
-                        
-                        <p>My journey started with web development and has evolved into building full-stack applications using modern technologies. I believe in continuous learning and staying up-to-date with the latest industry trends.</p>
-                        
-                        <p>When I'm not coding, you can find me exploring new tech, contributing to open-source projects, or experimenting with new design patterns.</p>
-                    </div>
-                    
-                    <div class="stats-grid">
-                        <div class="stat-item">
-                            <span class="stat-number" data-count="3">0</span>
-                            <span class="stat-label">Years Experience</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number" data-count="50">0</span>
-                            <span class="stat-label">Projects Completed</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number" data-count="15">0</span>
-                            <span class="stat-label">Happy Clients</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section" id="skills">
-            <div class="container">
-                <h2 class="section-title">Technical Skills</h2>
-                <div class="skills-grid">
-                    <div class="skill-category">
+                <div class="tech-categories">
+                    <div class="tech-category-card">
+                        <div class="tech-category-icon"><i class="fas fa-code"></i></div>
                         <h3>Frontend</h3>
-                        <div class="skill-items">
-                            <div class="skill-item">
-                                <div class="skill-header">
-                                    <span>JavaScript</span>
-                                    <span>90%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 90%"></div>
-                                </div>
-                            </div>
-                            
-                            <div class="skill-item">
-                                <div class="skill-header">
-                                    <span>TypeScript</span>
-                                    <span>85%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 85%"></div>
-                                </div>
-                            </div>
-                            
-                            <div class="skill-item">
-                                <div class="skill-header">
-                                    <span>React/Next.js</span>
-                                    <span>88%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 88%"></div>
-                                </div>
-                            </div>
-                        </div>
+                        <p>HTML5, CSS3, JavaScript, TypeScript, React, Next.js</p>
                     </div>
-                    
-                    <div class="skill-category">
+                    <div class="tech-category-card">
+                        <div class="tech-category-icon"><i class="fas fa-server"></i></div>
                         <h3>Backend</h3>
-                        <div class="skill-items">
-                            <div class="skill-item">
-                                <div class="skill-header">
-                                    <span>Node.js</span>
-                                    <span>82%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 82%"></div>
-                                </div>
-                            </div>
-                            
-                            <div class="skill-item">
-                                <div class="skill-header">
-                                    <span>PostgreSQL</span>
-                                    <span>78%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 78%"></div>
-                                </div>
-                            </div>
-                            
-                            <div class="skill-item">
-                                <div class="skill-header">
-                                    <span>Python</span>
-                                    <span>80%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 80%"></div>
-                                </div>
-                            </div>
-                        </div>
+                        <p>Node.js, NestJS, PHP, Laravel, Python</p>
                     </div>
-                    
-                    <div class="skill-category">
-                        <h3>Tools & DevOps</h3>
-                        <div class="skill-items">
-                            <div class="skill-item">
-                                <div class="skill-header">
-                                    <span>Docker</span>
-                                    <span>75%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 75%"></div>
-                                </div>
-                            </div>
-                            
-                            <div class="skill-item">
-                                <div class="skill-header">
-                                    <span>Git</span>
-                                    <span>95%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 95%"></div>
-                                </div>
-                            </div>
-                            
-                            <div class="skill-item">
-                                <div class="skill-header">
-                                    <span>Cloud Services</span>
-                                    <span>70%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 70%"></div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="tech-category-card">
+                        <div class="tech-category-icon"><i class="fas fa-database"></i></div>
+                        <h3>Database & DevOps</h3>
+                        <p>PostgreSQL, MySQL, MongoDB, Docker, Git, GitHub</p>
                     </div>
                 </div>
             </div>
         </section>
-
-        <section class="section tech-orbit-section">
+        
+        <!-- About Section -->
+        <section class="section about-section" id="about">
             <div class="container">
-                <h2 class="section-title">Technology Stack</h2>
-                <div class="orbit-container">
-                    <!-- Canvas for living technology orbit animation -->
-                    <canvas class="tech-orbit-canvas"></canvas>
-                    
-                    <!-- Frontend Technologies (Inner Orbit) -->
-                    <div class="orbit-ring orbit-inner-tech">
-                        <div class="orbit-item-tech" title="Next.js">
-                            <i class="devicon-nextjs-original colored"></i>
-                        </div>
-                        <div class="orbit-item-tech" title="React">
-                            <i class="devicon-react-original colored"></i>
-                        </div>
-                        <div class="orbit-item-tech" title="TypeScript">
-                            <i class="devicon-typescript-plain colored"></i>
-                        </div>
-                        <div class="orbit-item-tech" title="Tailwind CSS">
-                            <i class="devicon-tailwindcss-plain colored"></i>
-                        </div>
-                    </div>
-                    
-                    <!-- Backend Technologies (Outer Orbit) -->
-                    <div class="orbit-ring orbit-outer-tech">
-                        <div class="orbit-item-tech" title="Node.js">
-                            <i class="devicon-nodejs-plain colored"></i>
-                        </div>
-                        <div class="orbit-item-tech" title="NestJS">
-                            <i class="devicon-nestjs-plain colored"></i>
-                        </div>
-                        <div class="orbit-item-tech" title="PostgreSQL">
-                            <i class="devicon-postgresql-plain colored"></i>
-                        </div>
-                        <div class="orbit-item-tech" title="PHP">
-                            <i class="devicon-php-plain colored"></i>
-                        </div>
-                        <div class="orbit-item-tech" title="phpMyAdmin">
-                            <i class="devicon-phpmyadmin-plain colored"></i>
-                        </div>
-                        <div class="orbit-item-tech" title="Supabase">
-                            <i class="devicon-supabase-plain colored"></i>
-                        </div>
-                        <div class="orbit-item-tech" title="Neon">
-                            <img src="https://neon.tech/assets/neon-favicon.svg" alt="Neon" class="tech-logo">
-                        </div>
-                    </div>
-                    
-                    <!-- Central Profile with Moving Animation -->
-                    <div class="tech-profile-wrapper">
-                        <div class="tech-profile-container">
-                            <img src="Clean Full-Length Streetwear Cutout.png" alt="Paramatama Hamzah - Fullstack Developer" class="tech-profile-image">
-                            <div class="tech-profile-glow"></div>
-                        </div>
-                    </div>
+                <div class="section-header">
+                    <h2 class="section-title">About Me</h2>
+                    <p class="section-subtitle">Digital craftsman & problem solver</p>
                 </div>
                 
-                <!-- Technology Details Grid -->
-                <div class="tech-details-grid">
-                    <div class="tech-detail-card">
-                        <div class="tech-detail-icon">
-                            <i class="fab fa-react"></i>
+                <div class="about-grid">
+                    <div class="about-content">
+                        <p class="about-text">
+                            I'm a passionate Fullstack Developer with a keen eye for creating impactful digital experiences 
+                            that blend technical precision with creative design. With expertise in modern web technologies, 
+                            I transform ideas into elegant, functional solutions.
+                        </p>
+                        <p class="about-text">
+                            My journey spans across frontend and backend development, with proficiency in building 
+                            scalable applications using Next.js, React, Node.js, NestJS, and various database systems. 
+                            I believe in writing clean, maintainable code and delivering exceptional user experiences.
+                        </p>
+                        <p class="about-text">
+                            Based in Yogyakarta, Indonesia, I enjoy collaborating on challenging projects and 
+                            continuously learning new technologies to stay at the forefront of web development.
+                        </p>
+                        
+                        <div class="about-actions">
+                            <a href="#contact" class="btn btn-primary">Let's Work Together</a>
+                            <a href="#projects" class="btn btn-secondary">View My Work</a>
                         </div>
-                        <h3>Frontend</h3>
-                        <p>Next.js, React, TypeScript, Tailwind CSS</p>
                     </div>
                     
-                    <div class="tech-detail-card">
-                        <div class="tech-detail-icon">
-                            <i class="fab fa-node-js"></i>
+                    <div class="about-stats">
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-calendar-alt"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-number" data-count="3">0</span>
+                                <span class="stat-label">Years Experience</span>
+                            </div>
                         </div>
-                        <h3>Backend</h3>
-                        <p>Node.js, NestJS, PostgreSQL, Neon, Supabase</p>
-                    </div>
-                    
-                    <div class="tech-detail-card">
-                        <div class="tech-detail-icon">
-                            <i class="fab fa-php"></i>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-project-diagram"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-number" data-count="50">0</span>
+                                <span class="stat-label">Projects Completed</span>
+                            </div>
                         </div>
-                        <h3>Legacy Systems</h3>
-                        <p>PHP, phpMyAdmin, MySQL/MariaDB</p>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-users"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-number" data-count="15">0</span>
+                                <span class="stat-label">Happy Clients</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-code"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-number">∞</span>
+                                <span class="stat-label">Lines of Code</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
-
-        <section class="section" id="projects">
+        
+        <!-- Projects Section -->
+        <section class="section projects-section" id="projects">
             <div class="container">
-                <h2 class="section-title">Featured Projects</h2>
+                <div class="section-header">
+                    <h2 class="section-title">Featured Projects</h2>
+                    <p class="section-subtitle">Showcasing digital excellence</p>
+                </div>
                 
                 <div class="filter-buttons">
                     <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="fullstack">Fullstack</button>
                     <button class="filter-btn" data-filter="frontend">Frontend</button>
                     <button class="filter-btn" data-filter="backend">Backend</button>
-                    <button class="filter-btn" data-filter="fullstack">Fullstack</button>
                 </div>
                 
                 <div class="projects-grid">
-                    <div class="project-card" data-category="fullstack">
+                    <article class="project-card" data-category="fullstack">
                         <div class="project-image">
-                            <img src="https://images.unsplash.com/photo-1515378960530-7c0da7a7fe08?w=400&h=300&fit=crop" alt="E-commerce Platform">
+                            <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop" alt="E-commerce Platform">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="#" class="project-link-btn" aria-label="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                                    <a href="https://github.com/hamzahrama" class="project-link-btn" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                                </div>
+                            </div>
                         </div>
                         <div class="project-content">
                             <div class="project-tags">
-                                <span class="tag">React</span>
-                                <span class="tag">Node.js</span>
-                                <span class="tag">PostgreSQL</span>
+                                <span class="project-tag">Next.js</span>
+                                <span class="project-tag">Node.js</span>
+                                <span class="project-tag">PostgreSQL</span>
                             </div>
                             <h3 class="project-title">E-commerce Platform</h3>
-                            <p class="project-description">A complete e-commerce solution with admin dashboard, payment integration, and inventory management.</p>
-                            <div class="project-links">
-                                <a href="#" class="project-link">Live Demo</a>
-                                <a href="#" class="project-link">GitHub</a>
-                            </div>
+                            <p class="project-description">
+                                Full-featured e-commerce solution with admin dashboard, payment integration, 
+                                inventory management, and real-time analytics.
+                            </p>
                         </div>
-                    </div>
+                    </article>
                     
-                    <div class="project-card" data-category="frontend">
+                    <article class="project-card" data-category="frontend">
                         <div class="project-image">
-                            <img src="https://images.unsplash.com/photo-1523726182807-e4e6be050b67?w=400&h=300&fit=crop" alt="Task Manager App">
+                            <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop" alt="Task Management App">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="#" class="project-link-btn" aria-label="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                                    <a href="https://github.com/hamzahrama" class="project-link-btn" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                                </div>
+                            </div>
                         </div>
                         <div class="project-content">
                             <div class="project-tags">
-                                <span class="tag">Next.js</span>
-                                <span class="tag">Tailwind</span>
-                                <span class="tag">TypeScript</span>
+                                <span class="project-tag">React</span>
+                                <span class="project-tag">TypeScript</span>
+                                <span class="project-tag">Tailwind</span>
                             </div>
-                            <h3 class="project-title">Task Manager</h3>
-                            <p class="project-description">Modern task management application with real-time updates, drag-and-drop functionality, and team collaboration.</p>
-                            <div class="project-links">
-                                <a href="#" class="project-link">Live Demo</a>
-                                <a href="#" class="project-link">GitHub</a>
-                            </div>
+                            <h3 class="project-title">Task Manager Pro</h3>
+                            <p class="project-description">
+                                Modern task management application with drag-and-drop functionality, 
+                                team collaboration, and real-time updates.
+                            </p>
                         </div>
-                    </div>
+                    </article>
                     
-                    <div class="project-card" data-category="backend">
+                    <article class="project-card" data-category="backend">
                         <div class="project-image">
-                            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=300&fit=crop" alt="API Service">
+                            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop" alt="REST API Service">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="#" class="project-link-btn" aria-label="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                                    <a href="https://github.com/hamzahrama" class="project-link-btn" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                                </div>
+                            </div>
                         </div>
                         <div class="project-content">
                             <div class="project-tags">
-                                <span class="tag">Node.js</span>
-                                <span class="tag">Express</span>
-                                <span class="tag">MongoDB</span>
+                                <span class="project-tag">NestJS</span>
+                                <span class="project-tag">PostgreSQL</span>
+                                <span class="project-tag">JWT</span>
                             </div>
                             <h3 class="project-title">REST API Service</h3>
-                            <p class="project-description">Robust backend service with authentication, rate limiting, and comprehensive API documentation.</p>
-                            <div class="project-links">
-                                <a href="#" class="project-link">Live Demo</a>
-                                <a href="#" class="project-link">GitHub</a>
-                            </div>
+                            <p class="project-description">
+                                Scalable backend service with authentication, authorization, 
+                                rate limiting, and comprehensive API documentation.
+                            </p>
                         </div>
-                    </div>
+                    </article>
                 </div>
             </div>
         </section>
-
-        <section class="section" id="contact">
+        
+        <!-- Contact Section -->
+        <section class="section contact-section" id="contact">
             <div class="container">
-                <h2 class="section-title">Get In Touch</h2>
-                <div class="contact-content">
+                <div class="section-header">
+                    <h2 class="section-title">Get In Touch</h2>
+                    <p class="section-subtitle">Let's create something amazing together</p>
+                </div>
+                
+                <div class="contact-grid">
                     <div class="contact-info">
                         <div class="contact-item">
                             <div class="contact-icon">
@@ -383,17 +389,37 @@
                             </div>
                             <div class="contact-details">
                                 <h4>Email</h4>
-                                <p>paramatama@example.com</p>
+                                <a href="mailto:paramatamahamzah@gmail.com">paramatamahamzah@gmail.com</a>
                             </div>
                         </div>
                         
                         <div class="contact-item">
                             <div class="contact-icon">
-                                <i class="fas fa-phone"></i>
+                                <i class="fab fa-whatsapp"></i>
                             </div>
                             <div class="contact-details">
-                                <h4>Phone</h4>
-                                <p>+62 123 456 7890</p>
+                                <h4>WhatsApp</h4>
+                                <a href="https://wa.me/6281234567890" target="_blank" rel="noopener">+62 812 3456 7890</a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fab fa-github"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>GitHub</h4>
+                                <a href="https://github.com/hamzahrama" target="_blank" rel="noopener">github.com/hamzahrama</a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fab fa-linkedin"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>LinkedIn</h4>
+                                <a href="https://linkedin.com/in/paramatama-hamzah" target="_blank" rel="noopener">linkedin.com/in/paramatama-hamzah</a>
                             </div>
                         </div>
                         
@@ -410,55 +436,61 @@
                     
                     <form class="contact-form" id="contact-form">
                         <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" required>
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" class="form-input" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" class="form-input" required>
                         </div>
                         
                         <div class="form-group">
                             <label for="subject">Subject</label>
-                            <input type="text" id="subject" name="subject" required>
+                            <input type="text" id="subject" name="subject" class="form-input" required>
                         </div>
                         
                         <div class="form-group">
                             <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
+                            <textarea id="message" name="message" class="form-textarea" rows="5" required></textarea>
                         </div>
                         
-                        <button type="submit" class="btn btn-submit">Send Message</button>
+                        <button type="submit" class="btn btn-primary btn-submit">
+                            <span>Send Message</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
                     </form>
                 </div>
             </div>
         </section>
     </main>
-
+    
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <a href="#home">PH</a>
+                    <span class="footer-logo-text">PH</span>
                 </div>
-                <p class="footer-text">Creating digital experiences with passion and precision.</p>
-                <div class="social-links">
-                    <a href="#" class="social-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                    <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <p class="footer-text">Crafting digital experiences with passion and precision</p>
+                <div class="footer-social">
+                    <a href="https://github.com/hamzahrama" class="footer-social-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/in/paramatama-hamzah" class="footer-social-link" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://wa.me/6281234567890" class="footer-social-link" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="mailto:paramatamahamzah@gmail.com" class="footer-social-link" aria-label="Email"><i class="fas fa-envelope"></i></a>
                 </div>
-                <p class="copyright">© 2026 Paramatama Hamzah. All rights reserved.</p>
+                <p class="footer-copyright">© 2026 Paramatama Hamzah Boyle Fairuz. All rights reserved.</p>
             </div>
         </div>
     </footer>
-
-    <div class="scroll-top" id="scroll-top">
-        <i class="fas fa-arrow-up"></i>
-    </div>
-
+    
+    <!-- Scroll to Top -->
+    <button class="scroll-top" id="scroll-top" aria-label="Scroll to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+    
+    <!-- Scripts -->
     <script src="assets/js/main.js"></script>
-<script src="assets/js/living-tech-orbit.js"></script>
+    <script src="assets/js/living-tech-orbit-enhanced.js"></script>
 </body>
 </html>
