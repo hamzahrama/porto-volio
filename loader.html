@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booting System...</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: #000;
+            color: #0f0;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .terminal {
+            width: 90%;
+            max-width: 900px;
+            padding: 20px;
+        }
+
+        .line {
+            margin: 2px 0;
+            opacity: 0;
+            animation: fadeIn 0.1s forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 16px;
+            background: #0f0;
+            animation: blink 0.8s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% {
+                opacity: 1;
+            }
+            51%, 100% {
+                opacity: 0;
+            }
+        }
+
+        .success {
+            color: #0f0;
+        }
+
+        .error {
+            color: #f00;
+        }
+
+        .warning {
+            color: #ff0;
+        }
+
+        .info {
+            color: #0af;
+        }
+
+        .boot-logo {
+            color: #0af;
+            font-size: 12px;
+            margin-bottom: 20px;
+            white-space: pre;
+        }
+    </style>
+</head>
+<body>
+    <div class="terminal" id="terminal">
+        <div class="boot-logo">
+     ____   _   _ ____    ____ ____   ___  _____ ___ _     ___ ___  
+    |  _ \ | | | |  _ \  |  _ \___ \ / _ \|  ___|_ _| |   |_ _/ _ \ 
+    | |_) || |_| | |_) | | |_) |__) | | | | |_   | || |    | | | | |
+    |  __/ |  _  |  __/  |  __// __/| |_| |  _|  | || |___ | | |_| |
+    |_|    |_| |_|_|     |_|  |_____|\___/|_|   |___|_____|___\___/ 
+        </div>
+        <div id="output"></div>
+        <span class="cursor"></span>
+    </div>
+
+    <script>
+        const bootSequence = [
+            { text: '[  OK  ] Starting system boot sequence...', delay: 100, class: 'success' },
+            { text: '[  OK  ] Mounted /dev/sda1', delay: 150, class: 'success' },
+            { text: '[  OK  ] Reached target Basic System', delay: 100, class: 'success' },
+            { text: '[  OK  ] Started kernel module loader', delay: 120, class: 'success' },
+            { text: '[  OK  ] Listening on udev Control Socket', delay: 80, class: 'success' },
+            { text: '[  OK  ] Started Journal Service', delay: 90, class: 'success' },
+            { text: '[ INFO ] Loading portfolio components...', delay: 200, class: 'info' },
+            { text: '[  OK  ] Initialized audio subsystem', delay: 150, class: 'success' },
+            { text: '[  OK  ] Loaded music library (10 tracks)', delay: 180, class: 'success' },
+            { text: '[ INFO ] Artists: Ajeng Febria, Avenged Sevenfold, Rebellion Rose, Virgoun, SHA, Tony Q Rastafara', delay: 200, class: 'info' },
+            { text: '[  OK  ] Started network manager', delay: 100, class: 'success' },
+            { text: '[  OK  ] Reached target Network', delay: 120, class: 'success' },
+            { text: '[ INFO ] Preparing music player interface...', delay: 250, class: 'info' },
+            { text: '[  OK  ] Started Spotify-like UI service', delay: 180, class: 'success' },
+            { text: '[  OK  ] Reached target Multi-User System', delay: 150, class: 'success' },
+            { text: '[ INFO ] All systems operational', delay: 200, class: 'success' },
+            { text: '', delay: 300 },
+            { text: 'Welcome to PHP Portfolio Music Player', delay: 100, class: 'info' },
+            { text: 'Loading interface...', delay: 500, class: 'info' },
+        ];
+
+        const output = document.getElementById('output');
+        let currentLine = 0;
+
+        function printLine() {
+            if (currentLine < bootSequence.length) {
+                const { text, delay, class: className } = bootSequence[currentLine];
+                
+                const line = document.createElement('div');
+                line.className = `line ${className || ''}`;
+                line.textContent = text;
+                output.appendChild(line);
+                
+                currentLine++;
+                setTimeout(printLine, delay);
+            } else {
+                setTimeout(() => {
+                    window.location.href = 'music-player.html';
+                }, 1000);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(printLine, 500);
+        });
+    </script>
+</body>
+</html>

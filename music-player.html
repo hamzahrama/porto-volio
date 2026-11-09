@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHP Portfolio - Music Player</title>
+    <link rel="stylesheet" href="assets/css/music-player.css">
+    <script src="https://www.youtube.com/iframe_api"></script>
+</head>
+<body>
+    <div class="player-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <h1>♪ PHP Music</h1>
+            </div>
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-item">
+                    <span class="icon">🏠</span>
+                    <span>Portfolio</span>
+                </a>
+                <a href="#" class="nav-item active">
+                    <span class="icon">🎵</span>
+                    <span>Your Library</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="icon">❤️</span>
+                    <span>Liked Songs</span>
+                </a>
+            </nav>
+            <div class="playlists">
+                <div class="playlist-header">PLAYLISTS</div>
+                <div class="playlist-item active">My Favorites</div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="header">
+                <div class="header-content">
+                    <h2>My Favorite Tracks</h2>
+                    <p class="subtitle">10 songs · Curated by Paramatama Hamzah</p>
+                </div>
+            </header>
+
+            <div class="track-list">
+                <div class="track-header">
+                    <div class="track-col-number">#</div>
+                    <div class="track-col-title">TITLE</div>
+                    <div class="track-col-artist">ARTIST</div>
+                    <div class="track-col-duration">⏱</div>
+                </div>
+
+                <div class="track-item" data-index="0">
+                    <div class="track-col-number">1</div>
+                    <div class="track-col-title">
+                        <div class="track-title">Negoro Angin</div>
+                    </div>
+                    <div class="track-col-artist">Ajeng Febria</div>
+                    <div class="track-col-duration">3:45</div>
+                </div>
+
+                <div class="track-item" data-index="1">
+                    <div class="track-col-number">2</div>
+                    <div class="track-col-title">
+                        <div class="track-title">A Little Piece of Heaven</div>
+                    </div>
+                    <div class="track-col-artist">Avenged Sevenfold</div>
+                    <div class="track-col-duration">8:02</div>
+                </div>
+
+                <div class="track-item" data-index="2">
+                    <div class="track-col-number">3</div>
+                    <div class="track-col-title">
+                        <div class="track-title">Amnesia</div>
+                    </div>
+                    <div class="track-col-artist">Unknown Artist</div>
+                    <div class="track-col-duration">4:12</div>
+                </div>
+
+                <div class="track-item" data-index="3">
+                    <div class="track-col-number">4</div>
+                    <div class="track-col-title">
+                        <div class="track-title">Aku, Kamu dan Samudra</div>
+                    </div>
+                    <div class="track-col-artist">Rebellion Rose</div>
+                    <div class="track-col-duration">5:23</div>
+                </div>
+
+                <div class="track-item" data-index="4">
+                    <div class="track-col-number">5</div>
+                    <div class="track-col-title">
+                        <div class="track-title">Surat Cinta untuk Starla</div>
+                    </div>
+                    <div class="track-col-artist">Virgoun</div>
+                    <div class="track-col-duration">4:47</div>
+                </div>
+
+                <div class="track-item" data-index="5">
+                    <div class="track-col-number">6</div>
+                    <div class="track-col-title">
+                        <div class="track-title">Wanita Munafik</div>
+                    </div>
+                    <div class="track-col-artist">Unknown Artist</div>
+                    <div class="track-col-duration">3:58</div>
+                </div>
+
+                <div class="track-item" data-index="6">
+                    <div class="track-col-number">7</div>
+                    <div class="track-col-title">
+                        <div class="track-title">Sehat Selalu Saudaraku</div>
+                    </div>
+                    <div class="track-col-artist">Rebellion Rose</div>
+                    <div class="track-col-duration">4:35</div>
+                </div>
+
+                <div class="track-item" data-index="7">
+                    <div class="track-col-number">8</div>
+                    <div class="track-col-title">
+                        <div class="track-title">Aku Sedang Melayang</div>
+                    </div>
+                    <div class="track-col-artist">Stand Here Alone</div>
+                    <div class="track-col-duration">4:18</div>
+                </div>
+
+                <div class="track-item" data-index="8">
+                    <div class="track-col-number">9</div>
+                    <div class="track-col-title">
+                        <div class="track-title">Tertanam</div>
+                    </div>
+                    <div class="track-col-artist">Tony Q Rastafara</div>
+                    <div class="track-col-duration">5:11</div>
+                </div>
+
+                <div class="track-item" data-index="9">
+                    <div class="track-col-number">10</div>
+                    <div class="track-col-title">
+                        <div class="track-title">Cinta di Pantai Bali</div>
+                    </div>
+                    <div class="track-col-artist">Sejedewe</div>
+                    <div class="track-col-duration">3:52</div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Now Playing Bar -->
+        <footer class="now-playing-bar">
+            <div class="track-info">
+                <div class="track-image">🎵</div>
+                <div class="track-details">
+                    <div class="track-name" id="nowPlayingTitle">Select a track</div>
+                    <div class="track-artist" id="nowPlayingArtist">-</div>
+                </div>
+                <button class="btn-like">♡</button>
+            </div>
+
+            <div class="player-controls">
+                <div class="control-buttons">
+                    <button class="control-btn" id="btnShuffle">🔀</button>
+                    <button class="control-btn" id="btnPrev">⏮</button>
+                    <button class="control-btn-play" id="btnPlay">▶️</button>
+                    <button class="control-btn" id="btnNext">⏭</button>
+                    <button class="control-btn" id="btnRepeat">🔁</button>
+                </div>
+                <div class="progress-container">
+                    <span class="time-current" id="currentTime">0:00</span>
+                    <div class="progress-bar">
+                        <div class="progress-filled" id="progressFilled"></div>
+                        <input type="range" class="progress-slider" id="progressSlider" min="0" max="100" value="0">
+                    </div>
+                    <span class="time-total" id="totalTime">0:00</span>
+                </div>
+            </div>
+
+            <div class="volume-controls">
+                <button class="volume-btn">🔊</button>
+                <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="70">
+            </div>
+        </footer>
+    </div>
+
+    <script src="assets/js/music-player.js"></script>
+</body>
+</html>

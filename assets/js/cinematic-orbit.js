@@ -171,9 +171,8 @@ class CinematicOrbit {
     render() {
         const rect = this.canvas.getBoundingClientRect();
         
-        // Clear canvas with fade effect
-        this.ctx.fillStyle = 'rgba(8, 9, 13, 0.1)';
-        this.ctx.fillRect(0, 0, rect.width, rect.height);
+        // Clear canvas completely (transparent)
+        this.ctx.clearRect(0, 0, rect.width, rect.height);
         
         // Draw orbit rings
         this.drawOrbitRings();
@@ -190,9 +189,9 @@ class CinematicOrbit {
     
     drawOrbitRings() {
         const orbits = [
-            { radius: 120, color: this.colors.cyan, width: 1, opacity: 0.3 },
-            { radius: 180, color: this.colors.purple, width: 1, opacity: 0.25 },
-            { radius: 240, color: this.colors.amber, width: 1, opacity: 0.2 }
+            { radius: 100, color: this.colors.cyan, width: 1, opacity: 0.3 },
+            { radius: 150, color: this.colors.purple, width: 1, opacity: 0.25 },
+            { radius: 200, color: this.colors.amber, width: 1, opacity: 0.2 }
         ];
         
         orbits.forEach(orbit => {
@@ -224,7 +223,7 @@ class CinematicOrbit {
     }
     
     drawTechnologies() {
-        const orbitRadii = { 1: 120, 2: 180, 3: 240 };
+        const orbitRadii = { 1: 100, 2: 150, 3: 200 };
         
         this.technologies.forEach(tech => {
             const radius = orbitRadii[tech.orbit];

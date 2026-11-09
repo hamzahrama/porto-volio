@@ -89,12 +89,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 600px;
+    height: 480px;
+    max-height: 60vh;
 }
 
 .cinematic-stage {
     position: relative;
-    width: 100%;
+    width: 500px;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -183,9 +184,12 @@
 
 /* Portrait Container */
 .portrait-container {
-    position: relative;
-    width: 400px;
-    height: 520px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 320px;
+    height: 420px;
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -201,6 +205,8 @@
             drop-shadow(0 0 60px rgba(157, 77, 221, 0.2));
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     animation: portraitFloat 6s ease-in-out infinite;
+    position: relative;
+    z-index: 10;
 }
 
 @keyframes portraitFloat {
@@ -290,21 +296,21 @@
 
 .orbit-system {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 450px;
+    height: 450px;
     pointer-events: none;
     z-index: 3;
 }
 
 .orbit-canvas {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 600px;
-    height: 600px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     pointer-events: none;
 }
 
