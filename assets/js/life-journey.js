@@ -1,31 +1,22 @@
 // Life Journey Album - Photo Loader
 const albumPhotos = [
     // Education photos
-    { src: 'photos/tk-aba.svg', title: 'TK ABA XIII Wates', desc: 'Awal Mula Pendidikan', category: 'education' },
-    { src: 'photos/mi-muhammadiyah.svg', title: 'MI Muhammadiyah Undaan', desc: 'Pendidikan Dasar 6 Tahun', category: 'education' },
-    { src: 'photos/mts-maahid.svg', title: 'MTs Ma\'ahid Kudus', desc: 'SMP di Pesantren', category: 'education' },
-    { src: 'photos/ma-maahid.svg', title: 'MA Ma\'ahid Kudus', desc: 'SMA & Osis', category: 'education' },
-    { src: 'photos/panti-melati.svg', title: 'Panti Asuhan Yatim Melati', desc: '6 Tahun Menetap & Belajar', category: 'education' },
-    { src: 'photos/pondok-it.svg', title: 'Pondok IT Bantul', desc: 'Belajar Tech Saat Ini', category: 'education' },
-    
+    { src: 'photos/mi-muhammadiyah.jpg', title: 'MI Muhammadiyah Undaan', desc: 'Pendidikan Dasar 6 Tahun', category: 'education' },
+    { src: 'photos/mts-maahid.jpg', title: 'MTs Ma\'ahid Kudus', desc: 'SMP di Pesantren', category: 'education' },
+    { src: 'photos/ma-maahid.jpg', title: 'MA Ma\'ahid Kudus', desc: 'SMA & Osis', category: 'education' },
+    { src: 'photos/panti-melati.jpg', title: 'Panti Asuhan Yatim Melati', desc: '6 Tahun Menetap & Belajar', category: 'education' },
+    { src: 'photos/pondok-it.jpg', title: 'Pondok IT Bantul', desc: 'Belajar Tech Saat Ini', category: 'education' },
+
     // Organization photos
-    { src: 'photos/osis.svg', title: 'OSIS MA Ma\'ahid Kudus', desc: 'Kepemimpinan Siswa', category: 'organization' },
-    { src: 'photos/samapala.svg', title: 'SAMAPALA', desc: 'Santri Pencinta Alam', category: 'organization' },
-    { src: 'photos/ipm-ahmad-dahlan.svg', title: 'IPM Ahmad Dahlan', desc: 'Sekretaris Bidang', category: 'organization' },
-    { src: 'photos/ipm-undaan.svg', title: 'IPM PC Undaan', desc: 'Anggota Perkaderan', category: 'organization' },
-    { src: 'photos/ipm-kudus.svg', title: 'Fasilitator PD IPM Kudus', desc: 'Pengembangan Diri', category: 'organization' },
-    
+    { src: 'photos/samapala.jpg', title: 'SAMAPALA', desc: 'Santri Pencinta Alam', category: 'organization' },
+    { src: 'photos/ipm-ahmad-dahlan.jpg', title: 'IPM Ahmad Dahlan', desc: 'Sekretaris Bidang', category: 'organization' },
+    { src: 'photos/ipm-undaan.jpg', title: 'IPM PC Undaan', desc: 'Anggota Perkaderan', category: 'organization' },
+    { src: 'photos/ipm-kudus.jpg', title: 'Fasilitator PD IPM Kudus', desc: 'Pengembangan Diri', category: 'organization' },
+
     // Memory photos (from user uploads)
-    { src: 'photos/pondok-it-logo.svg', title: 'PONDOK IT Logo', desc: 'Tech School Branding', category: 'memory' },
-    { src: 'photos/mts-ponpes.svg', title: 'MTS-PONPES Gedung', desc: 'Sekolah & Acara Jalan Sehat', category: 'memory' },
-    { src: 'photos/ma-mahid-kudus.svg', title: 'MA & MTs Ma\'ahid Kudus', desc: 'Sekolah Asal', category: 'memory' },
-    { src: 'photos/pelantikan.svg', title: 'Pelantikan Pengurus', desc: 'Acara Pelantikan Organisasi', category: 'memory' },
-    { src: 'photos/wisuda.svg', title: 'Wisuda / Acara Keagamaan', desc: 'Momen Wisuda', category: 'memory' },
-    { src: 'photos/yayasan-al-ikhsan.svg', title: 'Yayasan Al-Ikhsan Panti Asuhan', desc: 'Kumpul di Panti Asuhan', category: 'memory' },
-    { src: 'photos/gunung.svg', title: 'Puncak Gunung', desc: 'Hiking & Reflection', category: 'memory' },
-    { src: 'photos/pantai.svg', title: 'Pantai & Sunset', desc: 'Beach Vibes & Recharging', category: 'memory' },
-    { src: 'photos/malam-api.svg', title: 'Malam di Alam', desc: 'Kegiatan Outdoor Pramuka', category: 'memory' },
-    { src: 'photos/beladiri-lomba.svg', title: 'Lomba Bela Diri', desc: 'Prestasi Perlombaan Bela Diri', category: 'memory' },
+    { src: 'photos/pantai.jpg', title: 'Pantai & Sunset', desc: 'Beach Vibes & Recharging', category: 'memory' },
+    { src: 'photos/malam-api.jpg', title: 'Malam di Alam', desc: 'Kegiatan Outdoor Pramuka', category: 'memory' },
+    { src: 'photos/beladiri-lomba.jpg', title: 'Lomba Bela Diri', desc: 'Prestasi Perlombaan Bela Diri', category: 'memory' },
 ];
 
 let currentFilter = 'all';
@@ -34,9 +25,9 @@ function initAlbum() {
     const grid = document.getElementById('albumGrid');
     const filters = document.getElementById('albumFilters');
     if (!grid || !filters) return;
-    
+
     grid.innerHTML = '';
-    
+
     albumPhotos.forEach((photo, index) => {
         const item = document.createElement('div');
         item.className = 'album-item';
@@ -55,7 +46,7 @@ function initAlbum() {
         `;
         grid.appendChild(item);
     });
-    
+
     // Filter button handlers
     filters.querySelectorAll('.album-filter-btn').forEach(btn => {
         btn.addEventListener('click', () => {
@@ -67,17 +58,17 @@ function initAlbum() {
 
 function setFilter(filter) {
     currentFilter = filter;
-    
+
     // Update active button
     document.querySelectorAll('.album-filter-btn').forEach(btn => {
         btn.classList.toggle('active', btn.dataset.filter === filter);
     });
-    
+
     // Filter items
     document.querySelectorAll('.album-item').forEach(item => {
         const category = item.dataset.category;
         const shouldShow = filter === 'all' || category === filter;
-        
+
         if (shouldShow) {
             item.classList.remove('hidden');
             item.style.animation = 'none';
