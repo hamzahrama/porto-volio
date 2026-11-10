@@ -25,6 +25,14 @@
     <meta name="keywords" content="fullstack developer, web developer, portfolio, next.js, react, node.js, nestjs, php">
 </head>
 <body>
+    <script>
+        // Check if coming from loader
+        const urlParams = new URLSearchParams(window.location.search);
+        if (!urlParams.has('loaded') && !window.location.hash) {
+            window.location.href = 'loader.html';
+        }
+    </script>
+
     <!-- Custom Cursor -->
     <div class="custom-cursor" id="customCursor"></div>
     
@@ -39,6 +47,7 @@
                 <li><a href="#skills" class="nav-link">Skills</a></li>
                 <li><a href="#projects" class="nav-link">Projects</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="music-player.html" class="nav-link music-btn"><i class="fas fa-music"></i> Music</a></li>
             </ul>
             
             <div class="nav-controls">
@@ -65,6 +74,7 @@
             <li><a href="#skills" class="mobile-nav-link">Skills</a></li>
             <li><a href="#projects" class="mobile-nav-link">Projects</a></li>
             <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+            <li><a href="music-player.html" class="mobile-nav-link"><i class="fas fa-music"></i> Music Player</a></li>
         </ul>
     </div>
     
@@ -217,14 +227,6 @@
                             <div class="timeline-item">
                                 <div class="timeline-marker"></div>
                                 <div class="timeline-content">
-                                    <span class="timeline-year">2008–2009</span>
-                                    <h4>TK ABA XIII Wates</h4>
-                                    <p>TK Aisyiyah Bustanul Athfal XIII Wates</p>
-                                </div>
-                            </div>
-                            <div class="timeline-item">
-                                <div class="timeline-marker"></div>
-                                <div class="timeline-content">
                                     <span class="timeline-year">2009–2015</span>
                                     <h4>MI Muhammadiyah Undaan</h4>
                                     <p>Madrasah Ibtidaiyah Muhammadiyah</p>
@@ -268,14 +270,6 @@
                     <div class="journey-category">
                         <h3 class="category-title"><i class="fas fa-users"></i> Riwayat Organisasi</h3>
                         <div class="timeline">
-                            <div class="timeline-item">
-                                <div class="timeline-marker"></div>
-                                <div class="timeline-content">
-                                    <span class="timeline-year">MA Ma'ahid</span>
-                                    <h4>OSIS MA Ma'ahid Kudus</h4>
-                                    <p>Pengalaman Kepemimpinan Siswa</p>
-                                </div>
-                            </div>
                             <div class="timeline-item">
                                 <div class="timeline-marker"></div>
                                 <div class="timeline-content">
@@ -403,89 +397,6 @@
                         </div>
                     </div>
                 </div>
-                
-                <div class="tech-categories">
-                    <div class="tech-category-card">
-                        <div class="tech-category-icon"><i class="fas fa-code"></i></div>
-                        <h3>Frontend</h3>
-                        <p>HTML5, CSS3, JavaScript, TypeScript, React, Next.js</p>
-                    </div>
-                    <div class="tech-category-card">
-                        <div class="tech-category-icon"><i class="fas fa-server"></i></div>
-                        <h3>Backend</h3>
-                        <p>Node.js, NestJS, PHP, Laravel, Python</p>
-                    </div>
-                    <div class="tech-category-card">
-                        <div class="tech-category-icon"><i class="fas fa-database"></i></div>
-                        <h3>Database & DevOps</h3>
-                        <p>PostgreSQL, MySQL, MongoDB, Docker, Git, GitHub</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- About Section -->
-        <section class="section about-section" id="about">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">About Me</h2>
-                    <p class="section-subtitle">Digital craftsman & problem solver</p>
-                </div>
-                
-                <div class="about-grid">
-                    <div class="about-content">
-                        <p class="about-text">
-                            I'm a passionate Fullstack Developer with a keen eye for creating impactful digital experiences 
-                            that blend technical precision with creative design. With expertise in modern web technologies, 
-                            I transform ideas into elegant, functional solutions.
-                        </p>
-                        <p class="about-text">
-                            My journey spans across frontend and backend development, with proficiency in building 
-                            scalable applications using Next.js, React, Node.js, NestJS, and various database systems. 
-                            I believe in writing clean, maintainable code and delivering exceptional user experiences.
-                        </p>
-                        <p class="about-text">
-                            Based in Yogyakarta, Indonesia, I enjoy collaborating on challenging projects and 
-                            continuously learning new technologies to stay at the forefront of web development.
-                        </p>
-                        
-                        <div class="about-actions">
-                            <a href="#contact" class="btn btn-primary">Let's Work Together</a>
-                            <a href="#projects" class="btn btn-secondary">View My Work</a>
-                        </div>
-                    </div>
-                    
-                    <div class="about-stats">
-                        <div class="stat-card">
-                            <div class="stat-icon"><i class="fas fa-calendar-alt"></i></div>
-                            <div class="stat-info">
-                                <span class="stat-number" data-count="3">0</span>
-                                <span class="stat-label">Years Experience</span>
-                            </div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-icon"><i class="fas fa-project-diagram"></i></div>
-                            <div class="stat-info">
-                                <span class="stat-number" data-count="50">0</span>
-                                <span class="stat-label">Projects Completed</span>
-                            </div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-icon"><i class="fas fa-users"></i></div>
-                            <div class="stat-info">
-                                <span class="stat-number" data-count="15">0</span>
-                                <span class="stat-label">Happy Clients</span>
-                            </div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-icon"><i class="fas fa-code"></i></div>
-                            <div class="stat-info">
-                                <span class="stat-number">∞</span>
-                                <span class="stat-label">Lines of Code</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </section>
         
@@ -495,13 +406,6 @@
                 <div class="section-header">
                     <h2 class="section-title">Featured Projects</h2>
                     <p class="section-subtitle">Showcasing digital excellence</p>
-                </div>
-                
-                <div class="filter-buttons">
-                    <button class="filter-btn active" data-filter="all">All</button>
-                    <button class="filter-btn" data-filter="fullstack">Fullstack</button>
-                    <button class="filter-btn" data-filter="frontend">Frontend</button>
-                    <button class="filter-btn" data-filter="backend">Backend</button>
                 </div>
                 
                 <div class="projects-grid">
@@ -680,9 +584,9 @@
                 </div>
             </div>
         </section>
-        
-                <!-- Projects Section -->
-            <footer class="footer">
+    </main>
+
+    <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
