@@ -1,16 +1,16 @@
-// Track database with YouTube video IDs
+// Track database with YouTube video IDs and themes
 const tracks = [
-    { title: 'Negoro Angin', artist: 'Ajeng Febria', duration: 425, youtubeId: 'b8jNeQT81Go' },
-    { title: 'A Little Piece of Heaven', artist: 'Avenged Sevenfold', duration: 482, youtubeId: 'onCZOgWlr1U' },
-    { title: 'Amnesia', artist: 'Al Ghazali', duration: 451, youtubeId: 'ImolMMYj-V8' },
-    { title: 'Aku, Kamu dan Samudra', artist: 'Rebellion Rose', duration: 323, youtubeId: 'EjCKw5Ixvh4' },
-    { title: 'Surat Cinta untuk Starla', artist: 'Virgoun', duration: 287, youtubeId: 'FocFked1TbQ' },
-    { title: 'Wanita Munafik', artist: 'Sejedewe', duration: 208, youtubeId: '4VXZQ5OaZUs' },
-    { title: 'Sehat Selalu Saudaraku', artist: 'Rebellion Rose', duration: 276, youtubeId: 'hOgNFE_13M4' },
-    { title: 'Aku Sedang Melayang', artist: 'Stand Here Alone', duration: 308, youtubeId: '1W1aLFmMhic' },
-    { title: 'Tertanam', artist: 'Tony Q Rastafara', duration: 205, youtubeId: 'Nf1v3rXxCqo' },
-    { title: 'Cinta di Pantai Bali', artist: 'Sejedewe', duration: 322, youtubeId: 'r0FUiSYRsk8' },
-    { title: 'Argata (Romi Jahat)', artist: 'Romi Jahat', duration: 180, youtubeId: 'regpMUquCPY' }
+    { title: 'Negoro Angin', artist: 'Ajeng Febria', duration: 425, youtubeId: 'b8jNeQT81Go', color: '#4c2b1a' },
+    { title: 'A Little Piece of Heaven', artist: 'Avenged Sevenfold', duration: 482, youtubeId: 'onCZOgWlr1U', color: '#2a2a2a' },
+    { title: 'Amnesia', artist: 'Al Ghazali', duration: 451, youtubeId: 'ImolMMYj-V8', color: '#1e3264' },
+    { title: 'Aku, Kamu dan Samudra', artist: 'Rebellion Rose', duration: 323, youtubeId: 'EjCKw5Ixvh4', color: '#1e4c3a' },
+    { title: 'Surat Cinta untuk Starla', artist: 'Virgoun', duration: 287, youtubeId: 'FocFked1TbQ', color: '#4c1e3a' },
+    { title: 'Wanita Munafik', artist: 'Sejedewe', duration: 208, youtubeId: '4VXZQ5OaZUs', color: '#4c3a1e' },
+    { title: 'Sehat Selalu Saudaraku', artist: 'Rebellion Rose', duration: 276, youtubeId: 'hOgNFE_13M4', color: '#1e3a4c' },
+    { title: 'Aku Sedang Melayang', artist: 'Stand Here Alone', duration: 308, youtubeId: '1W1aLFmMhic', color: '#3a1e4c' },
+    { title: 'Tertanam', artist: 'Tony Q Rastafara', duration: 205, youtubeId: 'Nf1v3rXxCqo', color: '#1e4c4c' },
+    { title: 'Cinta di Pantai Bali', artist: 'Sejedewe', duration: 322, youtubeId: 'r0FUiSYRsk8', color: '#4c4c1e' },
+    { title: 'Argata (Romi Jahat)', artist: 'Romi Jahat', duration: 180, youtubeId: 'regpMUquCPY', color: '#2e1a1a' }
 ];
 
 // Player state
@@ -36,6 +36,9 @@ const progressSlider = document.getElementById('progressSlider');
 const progressFilled = document.getElementById('progressFilled');
 const volumeSlider = document.getElementById('volumeSlider');
 const trackItems = document.querySelectorAll('.track-item');
+const mainContent = document.querySelector('.main-content');
+const btnLibrary = document.querySelector('.nav-item:nth-child(2)');
+const btnLiked = document.querySelector('.nav-item:nth-child(3)');
 
 // Format time
 function formatTime(seconds) {
@@ -101,6 +104,13 @@ function onPlayerStateChange(event) {
     }
 }
 
+// Update Dynamic Background
+function updateBackground(color) {
+    if (mainContent) {
+        mainContent.style.background = `linear-gradient(180deg, ${color} 0%, #121212 300px)`;
+    }
+}
+
 // Load track
 function loadTrack(index) {
     if (index < 0 || index >= tracks.length) return;
@@ -124,6 +134,9 @@ function loadTrack(index) {
             item.classList.remove('active', 'playing');
         }
     });
+
+    // Update dynamic background
+    updateBackground(track.color || '#1e3264');
     
     // Load video into YouTube player
     if (player) {
@@ -185,7 +198,6 @@ function nextTrack() {
     }
     
     loadTrack(nextIndex);
-    // Player will auto-play due to loadVideoById
 }
 
 // Previous track
@@ -235,9 +247,23 @@ volumeSlider.addEventListener('input', (e) => {
 trackItems.forEach((item, index) => {
     item.addEventListener('click', () => {
         loadTrack(index);
-        // Player will start playing after load
     });
 });
+
+// Sidebar buttons fix
+if (btnLibrary) {
+    btnLibrary.addEventListener('click', (e) => {
+        e.preventDefault();
+        alert('Your Library is already open!');
+    });
+}
+
+if (btnLiked) {
+    btnLiked.addEventListener('click', (e) => {
+        e.preventDefault();
+        alert('Liked Songs feature coming soon!');
+    });
+}
 
 // Button events
 btnPlay.addEventListener('click', togglePlay);
@@ -247,10 +273,13 @@ btnRepeat.addEventListener('click', toggleRepeat);
 btnShuffle.addEventListener('click', toggleShuffle);
 
 // Like button
-document.querySelector('.btn-like').addEventListener('click', function() {
-    this.classList.toggle('active');
-    this.textContent = this.classList.contains('active') ? '❤️' : '♡';
-});
+const btnLikeAction = document.querySelector('.btn-like');
+if (btnLikeAction) {
+    btnLikeAction.addEventListener('click', function() {
+        this.classList.toggle('active');
+        this.textContent = this.classList.contains('active') ? '❤️' : '♡';
+    });
+}
 
 // Keyboard shortcuts
 document.addEventListener('keydown', (e) => {
@@ -263,6 +292,3 @@ document.addEventListener('keydown', (e) => {
         prevTrack();
     }
 });
-
-// Initialize YouTube API on load
-// Called via window.onYouTubeIframeAPIReady in HTML
