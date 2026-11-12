@@ -60,9 +60,8 @@ class CinematicOrbit {
     setup() {
         this.canvas = document.getElementById('orbitCanvas');
         this.particlesContainer = document.getElementById('orbitParticles');
-        
-        if (!this.canvas) {
-            console.warn('Orbit canvas not found');
+
+        if (!this.canvas || !this.particlesContainer) {
             return;
         }
         
