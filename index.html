@@ -395,51 +395,268 @@
             </div>
         </section>
         
-        <!-- Technology Orbit Section -->
-        <section class="section tech-orbit-section" id="skills">
+        <!-- Tech Stack & Ecosystem Marquee Section -->
+        <section class="section tech-marquee-section" id="skills">
             <div class="container">
                 <div class="section-header">
-                    <h2 class="section-title">Living Technology Orbit</h2>
-                    <p class="section-subtitle">Technologies orbiting the digital ecosystem</p>
+                    <h2 class="section-title">Tech Stack & Ecosystem</h2>
+                    <p class="section-subtitle">Technologies & tools I use to build modern digital products.</p>
                 </div>
                 
-                <div class="orbit-wrapper">
-                    <div class="orbit-container">
-                        <canvas class="tech-orbit-canvas"></canvas>
-                        
-                        <!-- Inner Orbit - Frontend -->
-                        <div class="orbit-ring orbit-inner">
-                            <div class="orbit-item" data-tech="html5" title="HTML5"><i class="fab fa-html5"></i></div>
-                            <div class="orbit-item" data-tech="css3" title="CSS3"><i class="fab fa-css3-alt"></i></div>
-                            <div class="orbit-item" data-tech="javascript" title="JavaScript"><i class="fab fa-js"></i></div>
-                            <div class="orbit-item" data-tech="typescript" title="TypeScript"><i class="fab fa-js-square"></i></div>
-                            <div class="orbit-item" data-tech="react" title="React"><i class="fab fa-react"></i></div>
-                            <div class="orbit-item" data-tech="nextjs" title="Next.js"><i class="devicon-nextjs-original"></i></div>
+                <div class="tech-marquee-wrapper">
+                    <!-- Row 1: Frontend & Styling (Scroll Left) -->
+                    <div class="tech-marquee-row row-left">
+                        <div class="marquee-track">
+                            <!-- Item Set 1 -->
+                            <div class="tech-card" style="--accent-color: #E34F26;" data-category="Frontend">
+                                <i class="fab fa-html5" style="color: #E34F26;"></i>
+                                <div class="tech-info">
+                                    <span class="tech-name">HTML5</span>
+                                    <span class="tech-badge">Frontend</span>
+                                </div>
+                            </div>
+                            <div class="tech-card" style="--accent-color: #1572B6;" data-category="Frontend">
+                                <i class="fab fa-css3-alt" style="color: #1572B6;"></i>
+                                <div class="tech-info">
+                                    <span class="tech-name">CSS3</span>
+                                    <span class="tech-badge">Styling</span>
+                                </div>
+                            </div>
+                            <div class="tech-card" style="--accent-color: #38BDF8;" data-category="Styling">
+                                <i class="fab fa-css3" style="color: #38BDF8;"></i>
+                                <div class="tech-info">
+                                    <span class="tech-name">Tailwind CSS</span>
+                                    <span class="tech-badge">Styling</span>
+                                </div>
+                            </div>
+                            <div class="tech-card" style="--accent-color: #F7DF1E;" data-category="Language">
+                                <i class="fab fa-js" style="color: #F7DF1E;"></i>
+                                <div class="tech-info">
+                                    <span class="tech-name">JavaScript</span>
+                                    <span class="tech-badge">Language</span>
+                                </div>
+                            </div>
+                            <div class="tech-card" style="--accent-color: #61DAFB;" data-category="Frontend">
+                                <i class="fab fa-react" style="color: #61DAFB;"></i>
+                                <div class="tech-info">
+                                    <span class="tech-name">React</span>
+                                    <span class="tech-badge">Frontend</span>
+                                </div>
+                            </div>
+                            <div class="tech-card" style="--accent-color: #FFFFFF;" data-category="Fullstack">
+                                <i class="devicon-nextjs-original" style="color: #FFFFFF;"></i>
+                                <div class="tech-info">
+                                    <span class="tech-name">Next.js</span>
+                                    <span class="tech-badge">Fullstack</span>
+                                </div>
+                            </div>
+                            <div class="tech-card" style="--accent-color: #000000;" data-category="Cloud">
+                                <i class="fas fa-triangle-circle-square" style="color: #ffffff;"></i>
+                                <div class="tech-info">
+                                    <span class="tech-name">Vercel</span>
+                                    <span class="tech-badge">Cloud</span>
+                                </div>
+                            </div>
+                            <div class="tech-card" style="--accent-color: #F05032;" data-category="DevOps">
+                                <i class="fab fa-git-alt" style="color: #F05032;"></i>
+                                <div class="tech-info">
+                                    <span class="tech-name">Git</span>
+                                    <span class="tech-badge">DevOps</span>
+                                </div>
+                            </div>
+                            <div class="tech-card" style="--accent-color: #4EAA25;" data-category="DevOps">
+                                <i class="fas fa-terminal" style="color: #4EAA25;"></i>
+                                <div class="tech-info">
+                                    <span class="tech-name">Bash / CLI</span>
+                                    <span class="tech-badge">DevOps</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Item Set 2 (Duplicate for Seamless Loop) -->
+                            <div class="tech-card" style="--accent-color: #E34F26;" data-category="Frontend">
+                                <i class="fab fa-html5" style="color: #E34F26;"></i>
+                                <div class="tech-info">
+                                    <span class="tech-name">HTML5</span>
+                                    <span class="tech-badge">Frontend</span>
+                                </div>
+                            </div>
+                            <div class="tech-card" style="--accent-color: #1572B6;" data-category="Frontend">
+                                <i class="fab fa-css3-alt" style="color: #1572B6;"></i>
+                                <div class="tech-info">
+                                    <span class="tech-name">CSS3</span>
+                                    <span class="tech-badge">Styling</span>
+                                </div>
+                            </div>
+                            <div class="tech-card" style="--accent-color: #38BDF8;" data-category="Styling">
+                                <i class="fab fa-css3" style="color: #38BDF8;"></i>
+                                <div class="tech-info">
+                                    <span class="tech-name">Tailwind CSS</span>
+                                    <span class="tech-badge">Styling</span>
+                                </div>
+                            </div>
+                            <div class="tech-card" style="--accent-color: #F7DF1E;" data-category="Language">
+                                <i class="fab fa-js" style="color: #F7DF1E;"></i>
+                                <div class="tech-info">
+                                    <span class="tech-name">JavaScript</span>
+                                    <span class="tech-badge">Language</span>
+                                </div>
+                            </div>
+                            <div class="tech-card" style="--accent-color: #61DAFB;" data-category="Frontend">
+                                <i class="fab fa-react" style="color: #61DAFB;"></i>
+                                <div class="tech-info">
+                                    <span class="tech-name">React</span>
+                                    <span class="tech-badge">Frontend</span>
+                                </div>
+                            </div>
+                            <div class="tech-card" style="--accent-color: #FFFFFF;" data-category="Fullstack">
+                                <i class="devicon-nextjs-original" style="color: #FFFFFF;"></i>
+                                <div class="tech-info">
+                                    <span class="tech-name">Next.js</span>
+                                    <span class="tech-badge">Fullstack</span>
+                                </div>
+                            </div>
+                            <div class="tech-card" style="--accent-color: #000000;" data-category="Cloud">
+                                <i class="fas fa-triangle-circle-square" style="color: #ffffff;"></i>
+                                <div class="tech-info">
+                                    <span class="tech-name">Vercel</span>
+                                    <span class="tech-badge">Cloud</span>
+                                </div>
+                            </div>
+                            <div class="tech-card" style="--accent-color: #F05032;" data-category="DevOps">
+                                <i class="fab fa-git-alt" style="color: #F05032;"></i>
+                                <div class="tech-info">
+                                    <span class="tech-name">Git</span>
+                                    <span class="tech-badge">DevOps</span>
+                                </div>
+                            </div>
+                            <div class="tech-card" style="--accent-color: #4EAA25;" data-category="DevOps">
+                                <i class="fas fa-terminal" style="color: #4EAA25;"></i>
+                                <div class="tech-info">
+                                    <span class="tech-name">Bash / CLI</span>
+                                    <span class="tech-badge">DevOps</span>
+                                </div>
+                            </div>
                         </div>
-                        
-                        <!-- Middle Orbit - Backend -->
-                        <div class="orbit-ring orbit-middle">
-                            <div class="orbit-item" data-tech="nodejs" title="Node.js"><i class="fab fa-node-js"></i></div>
-                            <div class="orbit-item" data-tech="nestjs" title="NestJS"><i class="fas fa-server"></i></div>
-                            <div class="orbit-item" data-tech="php" title="PHP"><i class="fab fa-php"></i></div>
-                            <div class="orbit-item" data-tech="laravel" title="Laravel"><i class="fab fa-laravel"></i></div>
-                            <div class="orbit-item" data-tech="python" title="Python"><i class="fab fa-python"></i></div>
-                        </div>
-                        
-                        <!-- Outer Orbit - Database & DevOps -->
-                        <div class="orbit-ring orbit-outer">
-                            <div class="orbit-item" data-tech="postgresql" title="PostgreSQL"><i class="fas fa-database"></i></div>
-                            <div class="orbit-item" data-tech="mysql" title="MySQL"><i class="fas fa-database"></i></div>
-                            <div class="orbit-item" data-tech="mongodb" title="MongoDB"><i class="fas fa-leaf"></i></div>
-                            <div class="orbit-item" data-tech="docker" title="Docker"><i class="fab fa-docker"></i></div>
-                            <div class="orbit-item" data-tech="git" title="Git"><i class="fab fa-git-alt"></i></div>
-                            <div class="orbit-item" data-tech="github" title="GitHub"><i class="fab fa-github"></i></div>
-                        </div>
-                        
-                        <!-- Central Core -->
-                        <div class="orbit-core">
-                            <img src="Clean Full-Length Streetwear Cutout.png" alt="Core" class="orbit-core-image">
-                            <div class="orbit-core-glow"></div>
+                    </div>
+                    
+                    <!-- Row 2: Backend, Database & DevOps (Scroll Right) -->
+                    <div class="tech-marquee-row row-right">
+                        <div class="marquee-track">
+                            <!-- Item Set 1 -->
+                            <div class="tech-card" style="--accent-color: #339933;" data-category="Backend">
+                                <i class="fab fa-node-js" style="color: #339933;"></i>
+                                <div class="tech-info">
+                                    <span class="tech-name">Node.js</span>
+                                    <span class="tech-badge">Backend</span>
+                                </div>
+                            </div>
+                            <div class="tech-card" style="--accent-color: #E0234E;" data-category="Backend">
+                                <i class="fas fa-server" style="color: #E0234E;"></i>
+                                <div class="tech-info">
+                                    <span class="tech-name">NestJS</span>
+                                    <span class="tech-badge">Backend</span>
+                                </div>
+                            </div>
+                            <div class="tech-card" style="--accent-color: #2D3748;" data-category="ORM">
+                                <i class="fas fa-layer-group" style="color: #00F5FF;"></i>
+                                <div class="tech-info">
+                                    <span class="tech-name">Prisma</span>
+                                    <span class="tech-badge">ORM</span>
+                                </div>
+                            </div>
+                            <div class="tech-card" style="--accent-color: #336791;" data-category="Database">
+                                <i class="fas fa-database" style="color: #336791;"></i>
+                                <div class="tech-info">
+                                    <span class="tech-name">PostgreSQL</span>
+                                    <span class="tech-badge">Database</span>
+                                </div>
+                            </div>
+                            <div class="tech-card" style="--accent-color: #4479A1;" data-category="Database">
+                                <i class="fas fa-table" style="color: #4479A1;"></i>
+                                <div class="tech-info">
+                                    <span class="tech-name">MySQL / phpMyAdmin</span>
+                                    <span class="tech-badge">Database</span>
+                                </div>
+                            </div>
+                            <div class="tech-card" style="--accent-color: #00E599;" data-category="Cloud DB">
+                                <i class="fas fa-bolt" style="color: #00E599;"></i>
+                                <div class="tech-info">
+                                    <span class="tech-name">Neon</span>
+                                    <span class="tech-badge">Cloud DB</span>
+                                </div>
+                            </div>
+                            <div class="tech-card" style="--accent-color: #3ECF8E;" data-category="BaaS">
+                                <i class="fas fa-database" style="color: #3ECF8E;"></i>
+                                <div class="tech-info">
+                                    <span class="tech-name">Supabase</span>
+                                    <span class="tech-badge">BaaS</span>
+                                </div>
+                            </div>
+                            <div class="tech-card" style="--accent-color: #2496ED;" data-category="DevOps">
+                                <i class="fab fa-docker" style="color: #2496ED;"></i>
+                                <div class="tech-info">
+                                    <span class="tech-name">Docker</span>
+                                    <span class="tech-badge">DevOps</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Item Set 2 (Duplicate for Seamless Loop) -->
+                            <div class="tech-card" style="--accent-color: #339933;" data-category="Backend">
+                                <i class="fab fa-node-js" style="color: #339933;"></i>
+                                <div class="tech-info">
+                                    <span class="tech-name">Node.js</span>
+                                    <span class="tech-badge">Backend</span>
+                                </div>
+                            </div>
+                            <div class="tech-card" style="--accent-color: #E0234E;" data-category="Backend">
+                                <i class="fas fa-server" style="color: #E0234E;"></i>
+                                <div class="tech-info">
+                                    <span class="tech-name">NestJS</span>
+                                    <span class="tech-badge">Backend</span>
+                                </div>
+                            </div>
+                            <div class="tech-card" style="--accent-color: #2D3748;" data-category="ORM">
+                                <i class="fas fa-layer-group" style="color: #00F5FF;"></i>
+                                <div class="tech-info">
+                                    <span class="tech-name">Prisma</span>
+                                    <span class="tech-badge">ORM</span>
+                                </div>
+                            </div>
+                            <div class="tech-card" style="--accent-color: #336791;" data-category="Database">
+                                <i class="fas fa-database" style="color: #336791;"></i>
+                                <div class="tech-info">
+                                    <span class="tech-name">PostgreSQL</span>
+                                    <span class="tech-badge">Database</span>
+                                </div>
+                            </div>
+                            <div class="tech-card" style="--accent-color: #4479A1;" data-category="Database">
+                                <i class="fas fa-table" style="color: #4479A1;"></i>
+                                <div class="tech-info">
+                                    <span class="tech-name">MySQL / phpMyAdmin</span>
+                                    <span class="tech-badge">Database</span>
+                                </div>
+                            </div>
+                            <div class="tech-card" style="--accent-color: #00E599;" data-category="Cloud DB">
+                                <i class="fas fa-bolt" style="color: #00E599;"></i>
+                                <div class="tech-info">
+                                    <span class="tech-name">Neon</span>
+                                    <span class="tech-badge">Cloud DB</span>
+                                </div>
+                            </div>
+                            <div class="tech-card" style="--accent-color: #3ECF8E;" data-category="BaaS">
+                                <i class="fas fa-database" style="color: #3ECF8E;"></i>
+                                <div class="tech-info">
+                                    <span class="tech-name">Supabase</span>
+                                    <span class="tech-badge">BaaS</span>
+                                </div>
+                            </div>
+                            <div class="tech-card" style="--accent-color: #2496ED;" data-category="DevOps">
+                                <i class="fab fa-docker" style="color: #2496ED;"></i>
+                                <div class="tech-info">
+                                    <span class="tech-name">Docker</span>
+                                    <span class="tech-badge">DevOps</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
