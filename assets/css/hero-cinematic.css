@@ -85,13 +85,13 @@
    display: flex;
    justify-content: center;
    align-items: center;
-   min-height: clamp(380px, 50vh, 480px);
-   max-height: clamp(450px, 60vh, 600px);
+   min-height: clamp(350px, 50vh, 480px);
+   max-height: clamp(400px, 60vh, 600px);
 }
 
 .cinematic-stage {
    position: relative;
-   width: clamp(280px, 40vw, 500px);
+   width: clamp(260px, 40vw, 500px);
    height: 100%;
    display: flex;
    justify-content: center;
@@ -126,8 +126,8 @@
    bottom: 0;
    left: 50%;
    transform: translateX(-50%);
-   width: clamp(250px, 35vw, 400px);
-   height: 20px;
+   width: clamp(220px, 35vw, 400px);
+   height: clamp(15px, 2vh, 20px);
    background: linear-gradient(
        90deg,
        transparent,
@@ -168,8 +168,8 @@
    top: 50%;
    left: 50%;
    transform: translate(-50%, -50%);
-   width: clamp(220px, 30vw, 320px);
-   height: clamp(300px, 55vh, 420px);
+   width: clamp(200px, 30vw, 320px);
+   height: clamp(280px, 50vh, 420px);
    display: flex;
    justify-content: center;
    align-items: flex-end;
@@ -251,8 +251,8 @@
    top: 50%;
    left: 50%;
    transform: translate(-50%, -50%);
-   width: clamp(300px, 45vw, 450px);
-   height: clamp(300px, 45vw, 450px);
+   width: clamp(260px, 40vw, 450px);
+   height: clamp(260px, 40vw, 450px);
    pointer-events: none;
    z-index: 3;
 }
