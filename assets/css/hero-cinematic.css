@@ -171,9 +171,53 @@
    width: clamp(200px, 30vw, 320px);
    height: clamp(280px, 50vh, 420px);
    display: flex;
-   justify-content: center;
-   align-items: flex-end;
+   flex-direction: column;
+   justify-content: flex-end;
+   align-items: center;
    z-index: 5;
+}
+
+/* Marquee Styling */
+.portrait-marquee {
+    width: 150%;
+    overflow: hidden;
+    background: rgba(0, 245, 255, 0.1);
+    backdrop-filter: blur(4px);
+    border-top: 1px solid var(--border-accent);
+    border-bottom: 1px solid var(--border-accent);
+    margin-bottom: 10px;
+    padding: 5px 0;
+    transform: rotate(-2deg);
+    z-index: 10;
+}
+
+[data-theme="light"] .portrait-marquee {
+    background: rgba(0, 102, 255, 0.1);
+    border-color: rgba(0, 102, 255, 0.3);
+}
+
+.marquee-content {
+    display: flex;
+    white-space: nowrap;
+    animation: marquee 15s linear infinite;
+}
+
+.marquee-content span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--cyan-neon);
+    padding: 0 20px;
+    letter-spacing: 1px;
+}
+
+[data-theme="light"] .marquee-content span {
+    color: #0066FF;
+}
+
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
 }
 
 .hero-portrait {
