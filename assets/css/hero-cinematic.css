@@ -3,14 +3,19 @@
    Premium Portfolio Enhancement
    ======================================== */
 
-/* Hero 3-Column Grid Layout */
+/* Hero 3-Column Grid Layout - Responsive for 1366x768 to 1440x900 */
 .hero-3col {
-   display: grid !important;
-   grid-template-columns: 1fr 1.8fr 1fr !important;
-   gap: 3rem;
-   align-items: center;
-   position: relative;
-   z-index: 10;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr) !important;
+  gap: clamp(1.5rem, 3vw, 3rem);
+  align-items: center;
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 3vw, 2rem);
+  box-sizing: border-box;
 }
 
 /* ========================================
@@ -18,43 +23,40 @@
    ======================================== */
 
 .hero-left {
-   display: flex;
-   flex-direction: column;
-   gap: 1.5rem;
-   padding-right: 1rem;
-}
-
-.hero-left .hero-badge {
-   width: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.75rem, 1.5vh, 1.5rem);
+  padding-right: clamp(0.5rem, 1vw, 1rem);
+  min-width: 0;
 }
 
 .hero-left .hero-title {
-   font-size: 2.5rem;
-   margin-bottom: 0;
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  margin-bottom: 0;
 }
 
 .hero-left .hero-subtitle {
-   font-size: 1.5rem;
-   margin-bottom: 0;
+  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+  margin-bottom: 0;
 }
 
 .hero-left .hero-description {
-   max-width: 100%;
-   font-size: 1rem;
-   line-height: 1.7;
+  max-width: 100%;
+  font-size: clamp(0.9rem, 1.2vw, 1rem);
+  line-height: 1.7;
 }
 
 .hero-status {
-   display: flex;
-   align-items: center;
-   gap: 0.75rem;
-   padding: 0.75rem 1.25rem;
-   background: var(--bg-glass);
-   border: 1px solid var(--border-accent);
-   border-radius: 12px;
-   backdrop-filter: blur(10px);
-   width: fit-content;
-   margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: clamp(0.5rem, 1vh, 0.75rem) clamp(0.75rem, 1.5vw, 1.25rem);
+  background: var(--bg-glass);
+  border: 1px solid var(--border-accent);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  width: fit-content;
+  margin-top: clamp(0.25rem, 0.5vh, 0.5rem);
 }
 
 .status-pulse {
@@ -83,13 +85,13 @@
    display: flex;
    justify-content: center;
    align-items: center;
-   height: 480px;
-   max-height: 60vh;
+   min-height: clamp(380px, 50vh, 480px);
+   max-height: clamp(450px, 60vh, 600px);
 }
 
 .cinematic-stage {
    position: relative;
-   width: 500px;
+   width: clamp(280px, 40vw, 500px);
    height: 100%;
    display: flex;
    justify-content: center;
@@ -99,8 +101,8 @@
 /* Stage Lighting Effects */
 .stage-lighting {
    position: absolute;
-   width: 500px;
-   height: 500px;
+   width: clamp(300px, 50vw, 500px);
+   height: clamp(300px, 50vw, 500px);
    background: radial-gradient(
        circle at center,
        rgba(0, 245, 255, 0.15) 0%,
@@ -124,7 +126,7 @@
    bottom: 0;
    left: 50%;
    transform: translateX(-50%);
-   width: 400px;
+   width: clamp(250px, 35vw, 400px);
    height: 20px;
    background: linear-gradient(
        90deg,
@@ -166,8 +168,8 @@
    top: 50%;
    left: 50%;
    transform: translate(-50%, -50%);
-   width: 320px;
-   height: 420px;
+   width: clamp(220px, 30vw, 320px);
+   height: clamp(300px, 55vh, 420px);
    display: flex;
    justify-content: center;
    align-items: flex-end;
@@ -249,8 +251,8 @@
    top: 50%;
    left: 50%;
    transform: translate(-50%, -50%);
-   width: 450px;
-   height: 450px;
+   width: clamp(300px, 45vw, 450px);
+   height: clamp(300px, 45vw, 450px);
    pointer-events: none;
    z-index: 3;
 }
@@ -280,8 +282,9 @@
 .hero-right {
    display: flex;
    flex-direction: column;
-   gap: 2rem;
+   gap: clamp(1rem, 2vh, 2rem);
    align-items: flex-start;
+   min-width: 0;
 }
 
 .tech-panel {
@@ -289,7 +292,7 @@
    background: var(--bg-glass);
    border: 1px solid var(--border-accent);
    border-radius: 16px;
-   padding: 1.5rem;
+   padding: clamp(1rem, 2vh, 1.5rem);
    backdrop-filter: blur(10px);
    transition: all 0.3s ease;
 }
@@ -298,8 +301,8 @@
    display: flex;
    align-items: center;
    gap: 0.75rem;
-   margin-bottom: 1.25rem;
-   padding-bottom: 1rem;
+   margin-bottom: clamp(0.75rem, 1.5vh, 1.25rem);
+   padding-bottom: clamp(0.75rem, 1.5vh, 1rem);
    border-bottom: 1px solid var(--border-subtle);
 }
 
