@@ -17,6 +17,9 @@ const albumPhotos = [
     { src: 'photos/pantai.jpg', title: 'Pantai & Sunset', desc: 'Beach Vibes & Recharging', category: 'memory' },
     { src: 'photos/malam-api.jpg', title: 'Malam di Alam', desc: 'Kegiatan Outdoor Pramuka', category: 'memory' },
     { src: 'photos/beladiri-lomba.jpg', title: 'Lomba Bela Diri', desc: 'Prestasi Perlombaan Bela Diri', category: 'memory' },
+
+    // Certificates
+    { src: 'photos/certificates/sertifikat-programmer-kudus-2026.png', title: 'Programmer Komputer', desc: 'Sertifikat Pelatihan DBHCHT Kudus 2026', category: 'certificate' },
 ];
 
 let currentFilter = 'all';
