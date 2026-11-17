@@ -1,5 +1,5 @@
-// About Section Scroll Animations
-// IntersectionObserver-based reveal animations for all About section elements
+// Scroll Reveal Animations - All Sections
+// IntersectionObserver-based reveal animations for Hero, About, and other sections
 
 (function() {
     'use strict';
@@ -22,6 +22,17 @@
 
     // Elements to animate with their animation type and stagger delay
     const ANIMATION_TARGETS = [
+        // Hero Section Elements
+        { selector: '#home .hero-typing-container', animation: 'fade-up', delay: 0.1 },
+        { selector: '#home .hero-description', animation: 'fade-up', delay: 0.2 },
+        { selector: '#home .hero-cta', animation: 'fade-up', delay: 0.3 },
+        { selector: '#home .hero-status', animation: 'fade-up', delay: 0.4 },
+        { selector: '#home .portrait-container', animation: 'fade-up', delay: 0.1 },
+        { selector: '#home .portrait-marquee', animation: 'fade-up', delay: 0.5 },
+        { selector: '#home .tech-panel', animation: 'slide-left', delay: 0.1 },
+        { selector: '#home .stats-panel', animation: 'slide-right', delay: 0.2 },
+        { selector: '#home .music-dashboard-cta', animation: 'fade-up', delay: 0.3 },
+
         // About Header
         { selector: '#about .section-header', animation: 'fade-down', delay: 0 },
         
@@ -48,7 +59,7 @@
         { selector: '#albumFilters', animation: 'fade-up', delay: 0.1 }
     ];
 
-    function initAboutAnimations() {
+    function initScrollReveal() {
         // Create observer
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -124,17 +135,17 @@
     // Initialize when DOM is ready
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', () => {
-            initAboutAnimations();
+            initScrollReveal();
             observeDynamicContent();
         });
     } else {
-        initAboutAnimations();
+        initScrollReveal();
         observeDynamicContent();
     }
 
     // Expose for manual re-trigger if needed
-    window.reinitAboutAnimations = function() {
-        initAboutAnimations();
+    window.reinitScrollReveal = function() {
+        initScrollReveal();
         observeDynamicContent();
     };
 })();
